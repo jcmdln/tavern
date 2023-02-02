@@ -1,0 +1,17 @@
+[package]
+name = "tavern"
+description = "ActivityPub, ActivityStream and Vocabulary library."
+version = "0.0.2"
+license = "ISC"
+readme = "README.md"
+repository = "https://github.com/jcmdln/tavern"
+edition = "2021"
+rust-version = "1.56"
+
+[dependencies]
+derive_builder = "^0.12.0"
+#diesel = { version = "2.0.2", features = ["postgres", "serde_json", "uuid"] }
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.91"
+serde_with = "2.2.0"
+#tokio = { version = "1.24.1", features = ["full"] }

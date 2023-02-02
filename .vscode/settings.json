@@ -1,0 +1,28 @@
+{
+  "editor.insertSpaces": true,
+  "files.associations": {
+    ".clang-format": "yaml",
+    ".clang-tidy": "yaml",
+    ".clangd": "yaml",
+    "*.c": "c",
+    "*.h": "c"
+  },
+  "files.watcherExclude": {
+    "**/target/**": true
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": [
+      "${workspaceFolder}/.github/workflows/*.yml"
+    ]
+  },
+  // Per-language settings
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

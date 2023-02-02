@@ -1,0 +1,3 @@
+[workspace]
+members = ["tavern", "tavern_client", "tavern_server"]
+default-members = ["tavern", "tavern_client", "tavern_server"]
