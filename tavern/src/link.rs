@@ -2,7 +2,6 @@ use derive_builder::Builder;
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
-#[allow(dead_code)]
 #[skip_serializing_none]
 #[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
 #[builder(default)]
@@ -24,14 +23,12 @@ pub struct Link {
     pub width: Option<i32>,
 }
 
-#[allow(dead_code)]
 impl Link {
     pub fn builder(href: &str) -> Link {
         LinkBuilder::default().href(String::from(href)).build().unwrap()
     }
 }
 
-#[allow(dead_code)]
 #[skip_serializing_none]
 #[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
 #[builder(default)]
@@ -53,7 +50,6 @@ pub struct Mention {
     pub width: Option<i32>,
 }
 
-#[allow(dead_code)]
 impl Mention {
     pub fn builder(href: &str) -> Mention {
         MentionBuilder::default().href(String::from(href)).build().unwrap()
