@@ -1,254 +1,219 @@
-use derive_builder::Builder;
+use crate::{
+    core::{Link, Object},
+    traits::StreamTrait,
+};
+
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use serde_with::skip_serializing_none;
 
-#[allow(dead_code, non_snake_case)]
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Object {
-    #[builder(default = "json!(\"https://www.w3.org/ns/activitystreams\")")]
-    #[serde(rename = "@context")]
-    pub at_context: Value,
-
-    #[builder(default = "json!(\"Object\")")]
-    pub r#type: Value,
-
-    pub name: Option<String>,
-    pub nameMap: Option<Value>,
-    pub summary: Option<String>,
-    pub summaryMap: Option<Value>,
-    pub content: Option<String>,
-    pub contentMap: Option<Value>,
-
-    pub attributedTo: Option<Value>,
-    pub inReplyTo: Option<Value>,
-    pub published: Option<String>, // FIXME: datetime
-
-    pub to: Option<Value>,
-    pub bto: Option<Value>,
-    pub cc: Option<Value>,
-    pub bcc: Option<Value>,
-
-    pub attachment: Option<Value>,
-    pub audience: Option<Value>,
-    pub context: Option<Value>,
-    pub generator: Option<Value>,
-    pub icon: Option<Value>,
-    pub replies: Option<Value>,
-    pub location: Option<Value>,
-    pub preview: Option<Value>,
-    pub tag: Option<Value>,
-    pub updated: Option<Value>,
-    pub url: Option<Value>,
-
-    pub mediaType: Option<Value>,
-    pub image: Option<Value>,
-    pub duration: Option<f32>,
-    pub startTime: Option<String>, // FIXME: datetime
-    pub endTime: Option<String>,   // FIXME: datetime
-}
-
-impl Object {
-    pub fn builder() -> Object {
-        ObjectBuilder::default().build().unwrap()
-    }
-}
-
-#[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Article {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Article(Object);
 
 impl Article {
-    pub fn builder() -> Article {
-        let base = ObjectBuilder::default().r#type(json!("Article")).build().unwrap();
-        ArticleBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Article"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Audio {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Audio(Object);
 
 impl Audio {
-    pub fn builder() -> Audio {
-        let base = ObjectBuilder::default().r#type(json!("Audio")).build().unwrap();
-        AudioBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Audio"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Document {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Document(Object);
 
 impl Document {
-    pub fn builder() -> Document {
-        let base = ObjectBuilder::default().r#type(json!("Document")).build().unwrap();
-        DocumentBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Document"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Event {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Event(Object);
 
 impl Event {
-    pub fn builder() -> Event {
-        let base = ObjectBuilder::default().r#type(json!("Event")).build().unwrap();
-        EventBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Event"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Image {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Image(Object);
 
 impl Image {
-    pub fn builder() -> Image {
-        let base = ObjectBuilder::default().r#type(json!("Image")).build().unwrap();
-        ImageBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Image"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Note {
-    #[serde(flatten)]
-    base: Option<Object>,
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Mention(Link);
+
+impl Mention {
+    pub fn new() -> Link {
+        Link::default().r#type(json!("Mention"))
+    }
 }
+
+#[skip_serializing_none]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Note(Object);
 
 impl Note {
-    pub fn builder() -> Note {
-        let base = ObjectBuilder::default().r#type(json!("Note")).build().unwrap();
-        NoteBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Note"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Page {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Page(Object);
 
 impl Page {
-    pub fn builder() -> Page {
-        let base = ObjectBuilder::default().r#type(json!("Page")).build().unwrap();
-        PageBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Page"))
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Place {
-    accuracy: Option<f32>,
-    altitude: Option<f32>,
-    latitude: Option<f32>,
-    longitude: Option<f32>,
-    radius: Option<f32>,
-    units: Option<String>,
+    pub accuracy: Option<f32>,
+    pub altitude: Option<f32>,
+    pub latitude: Option<f32>,
+    pub longitude: Option<f32>,
+    pub radius: Option<f32>,
+    pub units: Option<String>,
 
     #[serde(flatten)]
-    base: Option<Object>,
+    pub base: Object,
 }
 
 impl Place {
-    pub fn builder() -> Place {
-        let base = ObjectBuilder::default().r#type(json!("Place")).build().unwrap();
-        PlaceBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Place {
+        Place::default()
+            .at_context(json!("https://www.w3.org/ns/activitystreams"))
+            .r#type(json!("Place"))
+    }
+}
+
+impl StreamTrait for Place {
+    fn at_context(&mut self, value: Value) -> Self {
+        self.base.at_context = value;
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: Value) -> Self {
+        self.base.r#type = value;
+        self.to_owned()
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Profile {
-    describes: Option<Object>,
+    pub describes: Option<Value>,
 
     #[serde(flatten)]
-    base: Option<Object>,
+    pub base: Object,
 }
 
 impl Profile {
-    pub fn builder() -> Profile {
-        let base = ObjectBuilder::default().r#type(json!("Profile")).build().unwrap();
-        ProfileBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Profile {
+        Profile::default()
+            .at_context(json!("https://www.w3.org/ns/activitystreams"))
+            .r#type(json!("Profile"))
+    }
+}
+
+impl StreamTrait for Profile {
+    fn at_context(&mut self, value: Value) -> Self {
+        self.base.at_context = value;
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: Value) -> Self {
+        self.base.r#type = value;
+        self.to_owned()
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Relationship {
-    object: Option<Object>,
-    relationship: Option<String>,
-    subject: Option<String>,
+    pub object: Option<Value>,
+    pub relationship: Option<Value>,
+    pub subject: Option<Value>,
 
     #[serde(flatten)]
-    base: Option<Object>,
+    pub base: Object,
 }
 
 impl Relationship {
-    pub fn builder() -> Relationship {
-        let base = ObjectBuilder::default().r#type(json!("Relationship")).build().unwrap();
-        RelationshipBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Relationship {
+        Relationship::default()
+            .at_context(json!("https://www.w3.org/ns/activitystreams"))
+            .r#type(json!("Relationship"))
+    }
+}
+
+impl StreamTrait for Relationship {
+    fn at_context(&mut self, value: Value) -> Self {
+        self.base.at_context = value;
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: Value) -> Self {
+        self.base.r#type = value;
+        self.to_owned()
     }
 }
 
 #[allow(dead_code, non_snake_case)]
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Tombstone {
-    formerType: Option<String>,
-    deleted: Option<String>,
+    pub deleted: Option<String>,
+    pub formerType: Option<Value>,
 
     #[serde(flatten)]
-    base: Option<Object>,
+    pub base: Object,
 }
 
 impl Tombstone {
-    pub fn builder() -> Tombstone {
-        let base = ObjectBuilder::default().r#type(json!("Tombstone")).build().unwrap();
-        TombstoneBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Tombstone {
+        Tombstone::default()
+            .at_context(json!("https://www.w3.org/ns/activitystreams"))
+            .r#type(json!("Tombstone"))
+    }
+}
+
+impl StreamTrait for Tombstone {
+    fn at_context(&mut self, value: Value) -> Self {
+        self.base.at_context = value;
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: Value) -> Self {
+        self.base.r#type = value;
+        self.to_owned()
     }
 }
 
 #[skip_serializing_none]
-#[derive(Builder, Debug, Default, Clone, Deserialize, Serialize)]
-#[builder(default)]
-pub struct Video {
-    #[serde(flatten)]
-    base: Option<Object>,
-}
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Video(Object);
 
 impl Video {
-    pub fn builder() -> Video {
-        let base = ObjectBuilder::default().r#type(json!("Video")).build().unwrap();
-        VideoBuilder::default().base(Some(base)).build().unwrap()
+    pub fn new() -> Object {
+        Object::new().r#type(json!("Video"))
     }
 }

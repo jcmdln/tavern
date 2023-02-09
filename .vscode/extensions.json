@@ -1,12 +1,10 @@
 {
   "recommendations": [
-    "streetsidesoftware.code-spell-checker",
-    "tamasfe.even-better-toml",
+    "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "redhat.vscode-yaml",
-    "wayou.vscode-todo-highlight",
-    "editorconfig.editorconfig",
-    "tomoki1207.pdf",
-    "rust-lang.rust-analyzer"
+    "rust-lang.rust-analyzer",
+    "tamasfe.even-better-toml",
+    "wayou.vscode-todo-highlight"
   ]
 }

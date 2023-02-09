@@ -1,24 +1,42 @@
-use tavern::link::{Link, Mention};
-use tavern::object::{
-    Article, Audio, Document, Event, Image, Note, Object, Page, Place, Profile, Relationship,
-    Tombstone, Video,
-};
+use serde_json::{json, Value};
+use std::process::exit;
 
 fn main() {
-    println!("{}", serde_json::to_value(Link::builder("https://domain.tld")).unwrap());
-    println!("{}", serde_json::to_value(Mention::builder("https://domain.tld")).unwrap());
+    let value = json!({
+        "@context": "https://www.w3.org/ns/activitystreams",
+        "type": "Object",
+    });
 
-    println!("{}", serde_json::to_value(Object::builder()).unwrap());
-    println!("{}", serde_json::to_value(Article::builder()).unwrap());
-    println!("{}", serde_json::to_value(Audio::builder()).unwrap());
-    println!("{}", serde_json::to_value(Document::builder()).unwrap());
-    println!("{}", serde_json::to_value(Event::builder()).unwrap());
-    println!("{}", serde_json::to_value(Image::builder()).unwrap());
-    println!("{}", serde_json::to_value(Note::builder()).unwrap());
-    println!("{}", serde_json::to_value(Page::builder()).unwrap());
-    println!("{}", serde_json::to_value(Place::builder()).unwrap());
-    println!("{}", serde_json::to_value(Profile::builder()).unwrap());
-    println!("{}", serde_json::to_value(Relationship::builder()).unwrap());
-    println!("{}", serde_json::to_value(Tombstone::builder()).unwrap());
-    println!("{}", serde_json::to_value(Video::builder()).unwrap());
+    let value_context = value.get("@context").unwrap();
+    match value_context {
+        Value::String(v) => Some(Value::String(v.to_owned())),
+        Value::Array(v) => Some(Value::Array(v.to_owned())),
+        Value::Object(v) => Some(Value::Object(v.to_owned())),
+        _ => {
+            println!("error: unknown @context");
+            exit(1);
+        }
+    };
+
+    let value_type = value.get("type").unwrap();
+    match value_type {
+        Value::String(v) => Some(Value::String(v.to_owned())),
+        Value::Array(v) => Some(Value::Array(v.to_owned())),
+        Value::Object(v) => Some(Value::Object(v.to_owned())),
+        _ => {
+            println!("error: unknown type");
+            exit(1);
+        }
+    };
+
+    println!("value: {}", value);
+
+    let object = tavern::core::Object::new();
+    println!("{}", serde_json::to_string(&object).unwrap());
+
+    let page = tavern::object::Page::new();
+    println!("{}", serde_json::to_string(&page).unwrap());
+
+    let place = tavern::object::Place::new();
+    println!("{}", serde_json::to_string(&place).unwrap());
 }
