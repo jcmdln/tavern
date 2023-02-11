@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use crate::{core, object};
 use serde::{Deserialize, Serialize};
 
@@ -39,10 +41,19 @@ pub enum AnyOf {
     Vec(Vec<AnyOf>),
 }
 
+/// Identifies the processing context by reference to its normative definition.
+/// Implementations may augment the provided @context with additional @context
+/// definitions but must not override or change the normative context.
+///
+/// URI: @context
+///
+/// Domain: `Object` | `Link`
+///
+/// Range: `Object`
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AtContext {
-    Object(Box<core::Object>),
+    Map(HashMap<String, String>),
     String(String),
     Vec(Vec<AtContext>),
 }
@@ -244,7 +255,7 @@ pub enum First {
 /// On a Profile object, the describes property identifies the object described
 /// by the Profile.
 ///
-/// URI: https://www.w3.org/ns/activitystreams#describes
+/// URI: https://www.w3.org/ns/activitystreams#formerType
 ///
 /// Domain: `Profile`
 ///
@@ -549,7 +560,7 @@ pub enum Relationship {
 /// Identifies a Collection containing objects considered to be responses to
 /// this object.
 ///
-/// URI: https://www.w3.org/ns/activitystreams#result
+/// URI: https://www.w3.org/ns/activitystreams#replies
 ///
 /// Domain: `Object`
 ///
