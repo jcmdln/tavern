@@ -1,92 +1,272 @@
-use crate::{
-    core::{Link, Object},
-    traits::StreamTrait,
-};
-
+use crate::{core::Object, property, traits::StreamTrait};
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
 use serde_with::skip_serializing_none;
 
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Article(Object);
+pub struct Article {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Article {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Article"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Article".to_string()))
     }
 }
 
+impl StreamTrait for Article {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Audio(Object);
+pub struct Audio {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Audio {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Audio"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Audio".to_string()))
     }
 }
 
+impl StreamTrait for Audio {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Document(Object);
+pub struct Document {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Document {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Document"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Document".to_string()))
     }
 }
 
+impl StreamTrait for Document {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Event(Object);
+pub struct Event {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Event {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Event"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Event".to_string()))
     }
 }
 
+impl StreamTrait for Event {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Image(Object);
+pub struct Image {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Image {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Image"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Image".to_string()))
     }
 }
 
+impl StreamTrait for Image {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Mention(Link);
+pub struct Mention {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Mention {
-    pub fn new() -> Link {
-        Link::default().r#type(json!("Mention"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Mention".to_string()))
     }
 }
 
+impl StreamTrait for Mention {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Note(Object);
+pub struct Note {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Note {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Note"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Note".to_string()))
     }
 }
 
+impl StreamTrait for Note {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Page(Object);
+pub struct Page {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Page {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Page"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Page".to_string()))
     }
 }
 
+impl StreamTrait for Page {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
+    }
+}
+
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Place {
@@ -104,26 +284,33 @@ pub struct Place {
 impl Place {
     pub fn new() -> Place {
         Place::default()
-            .at_context(json!("https://www.w3.org/ns/activitystreams"))
-            .r#type(json!("Place"))
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Place".to_string()))
     }
 }
 
 impl StreamTrait for Place {
-    fn at_context(&mut self, value: Value) -> Self {
-        self.base.at_context = value;
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
         self.to_owned()
     }
-    fn r#type(&mut self, value: Value) -> Self {
-        self.base.r#type = value;
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
         self.to_owned()
     }
 }
 
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Profile {
-    pub describes: Option<Value>,
+    pub describes: Option<property::Describes>,
 
     #[serde(flatten)]
     pub base: Object,
@@ -132,28 +319,35 @@ pub struct Profile {
 impl Profile {
     pub fn new() -> Profile {
         Profile::default()
-            .at_context(json!("https://www.w3.org/ns/activitystreams"))
-            .r#type(json!("Profile"))
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Profile".to_string()))
     }
 }
 
 impl StreamTrait for Profile {
-    fn at_context(&mut self, value: Value) -> Self {
-        self.base.at_context = value;
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
         self.to_owned()
     }
-    fn r#type(&mut self, value: Value) -> Self {
-        self.base.r#type = value;
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
         self.to_owned()
     }
 }
 
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Relationship {
-    pub object: Option<Value>,
-    pub relationship: Option<Value>,
-    pub subject: Option<Value>,
+    pub object: Option<property::Object>,
+    pub relationship: Option<property::Relationship>,
+    pub subject: Option<property::Subject>,
 
     #[serde(flatten)]
     pub base: Object,
@@ -162,28 +356,35 @@ pub struct Relationship {
 impl Relationship {
     pub fn new() -> Relationship {
         Relationship::default()
-            .at_context(json!("https://www.w3.org/ns/activitystreams"))
-            .r#type(json!("Relationship"))
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Relationship".to_string()))
     }
 }
 
 impl StreamTrait for Relationship {
-    fn at_context(&mut self, value: Value) -> Self {
-        self.base.at_context = value;
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
         self.to_owned()
     }
-    fn r#type(&mut self, value: Value) -> Self {
-        self.base.r#type = value;
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
         self.to_owned()
     }
 }
 
 #[allow(dead_code, non_snake_case)]
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Tombstone {
     pub deleted: Option<String>,
-    pub formerType: Option<Value>,
+    pub formerType: Option<property::FormerType>,
 
     #[serde(flatten)]
     pub base: Object,
@@ -192,28 +393,57 @@ pub struct Tombstone {
 impl Tombstone {
     pub fn new() -> Tombstone {
         Tombstone::default()
-            .at_context(json!("https://www.w3.org/ns/activitystreams"))
-            .r#type(json!("Tombstone"))
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Tombstone".to_string()))
     }
 }
 
 impl StreamTrait for Tombstone {
-    fn at_context(&mut self, value: Value) -> Self {
-        self.base.at_context = value;
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
         self.to_owned()
     }
-    fn r#type(&mut self, value: Value) -> Self {
-        self.base.r#type = value;
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
         self.to_owned()
     }
 }
 
+#[allow(non_snake_case)]
 #[skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
-pub struct Video(Object);
+pub struct Video {
+    #[serde(flatten)]
+    pub base: Object,
+}
 
 impl Video {
-    pub fn new() -> Object {
-        Object::new().r#type(json!("Video"))
+    pub fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".to_string(),
+            ))
+            .r#type(property::Type::String("Video".to_string()))
+    }
+}
+
+impl StreamTrait for Video {
+    fn atContext(&mut self, value: property::AtContext) -> Self {
+        self.base.atContext = Some(value);
+        self.to_owned()
+    }
+    fn id(&mut self, value: String) -> Self {
+        self.base.id = Some(value);
+        self.to_owned()
+    }
+    fn r#type(&mut self, value: property::Type) -> Self {
+        self.base.r#type = Some(value);
+        self.to_owned()
     }
 }

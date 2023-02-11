@@ -9,11 +9,13 @@ edition = "2021"
 rust-version = "1.56"
 
 [dependencies]
-axum = "0.6.2"
 diesel = { version = "2.0.2", features = ["postgres", "serde_json", "uuid"] }
 serde = { version = "1.0.152", features = ["derive"] }
 serde_json = "1.0.91"
+serde_with = "2.2.0"
 tokio = { version = "1.24.1", features = ["full"] }
+
+axum = "0.6.2"
 #zeromq = {"0.3.3"}
 
 [dependencies.tavern]

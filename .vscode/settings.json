@@ -1,5 +1,6 @@
 {
   "editor.insertSpaces": true,
+
   "files.associations": {
     ".clang-format": "yaml",
     ".clang-tidy": "yaml",
@@ -10,11 +11,15 @@
   "files.watcherExclude": {
     "**/target/**": true
   },
+
+  "rust-analyzer.check.command": "clippy",
+
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": [
       "${workspaceFolder}/.github/workflows/*.yml"
     ]
   },
+
   // Per-language settings
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
