@@ -1,4 +1,5 @@
-use crate::{core::Object, property, traits::StreamTrait};
+use crate::{core::Object, impl_Object_for, property, traits::StreamTrait};
+
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 
@@ -10,6 +11,8 @@ pub struct Article {
     pub base: Object,
 }
 
+impl_Object_for!(Article);
+
 impl Article {
     pub fn new() -> Self {
         Self::default()
@@ -17,21 +20,6 @@ impl Article {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Article".to_string()))
-    }
-}
-
-impl StreamTrait for Article {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -43,6 +31,8 @@ pub struct Audio {
     pub base: Object,
 }
 
+impl_Object_for!(Audio);
+
 impl Audio {
     pub fn new() -> Self {
         Self::default()
@@ -50,21 +40,6 @@ impl Audio {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Audio".to_string()))
-    }
-}
-
-impl StreamTrait for Audio {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -76,6 +51,8 @@ pub struct Document {
     pub base: Object,
 }
 
+impl_Object_for!(Document);
+
 impl Document {
     pub fn new() -> Self {
         Self::default()
@@ -83,21 +60,6 @@ impl Document {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Document".to_string()))
-    }
-}
-
-impl StreamTrait for Document {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -109,6 +71,8 @@ pub struct Event {
     pub base: Object,
 }
 
+impl_Object_for!(Event);
+
 impl Event {
     pub fn new() -> Self {
         Self::default()
@@ -116,21 +80,6 @@ impl Event {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Event".to_string()))
-    }
-}
-
-impl StreamTrait for Event {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -142,6 +91,8 @@ pub struct Image {
     pub base: Object,
 }
 
+impl_Object_for!(Image);
+
 impl Image {
     pub fn new() -> Self {
         Self::default()
@@ -149,21 +100,6 @@ impl Image {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Image".to_string()))
-    }
-}
-
-impl StreamTrait for Image {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -175,6 +111,8 @@ pub struct Mention {
     pub base: Object,
 }
 
+impl_Object_for!(Mention);
+
 impl Mention {
     pub fn new() -> Self {
         Self::default()
@@ -182,21 +120,6 @@ impl Mention {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Mention".to_string()))
-    }
-}
-
-impl StreamTrait for Mention {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -208,6 +131,8 @@ pub struct Note {
     pub base: Object,
 }
 
+impl_Object_for!(Note);
+
 impl Note {
     pub fn new() -> Self {
         Self::default()
@@ -215,21 +140,6 @@ impl Note {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Note".to_string()))
-    }
-}
-
-impl StreamTrait for Note {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -241,6 +151,8 @@ pub struct Page {
     pub base: Object,
 }
 
+impl_Object_for!(Page);
+
 impl Page {
     pub fn new() -> Self {
         Self::default()
@@ -248,21 +160,6 @@ impl Page {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Page".to_string()))
-    }
-}
-
-impl StreamTrait for Page {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -281,6 +178,8 @@ pub struct Place {
     pub base: Object,
 }
 
+impl_Object_for!(Place);
+
 impl Place {
     pub fn new() -> Place {
         Place::default()
@@ -288,21 +187,6 @@ impl Place {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Place".to_string()))
-    }
-}
-
-impl StreamTrait for Place {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -316,6 +200,8 @@ pub struct Profile {
     pub base: Object,
 }
 
+impl_Object_for!(Profile);
+
 impl Profile {
     pub fn new() -> Profile {
         Profile::default()
@@ -323,21 +209,6 @@ impl Profile {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Profile".to_string()))
-    }
-}
-
-impl StreamTrait for Profile {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -353,6 +224,8 @@ pub struct Relationship {
     pub base: Object,
 }
 
+impl_Object_for!(Relationship);
+
 impl Relationship {
     pub fn new() -> Relationship {
         Relationship::default()
@@ -360,21 +233,6 @@ impl Relationship {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Relationship".to_string()))
-    }
-}
-
-impl StreamTrait for Relationship {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -390,6 +248,8 @@ pub struct Tombstone {
     pub base: Object,
 }
 
+impl_Object_for!(Tombstone);
+
 impl Tombstone {
     pub fn new() -> Tombstone {
         Tombstone::default()
@@ -397,21 +257,6 @@ impl Tombstone {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Tombstone".to_string()))
-    }
-}
-
-impl StreamTrait for Tombstone {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }
 
@@ -423,6 +268,8 @@ pub struct Video {
     pub base: Object,
 }
 
+impl_Object_for!(Video);
+
 impl Video {
     pub fn new() -> Self {
         Self::default()
@@ -430,20 +277,5 @@ impl Video {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Video".to_string()))
-    }
-}
-
-impl StreamTrait for Video {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }

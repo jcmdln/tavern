@@ -1,11 +1,15 @@
 use crate::{core::Object, property, traits::StreamTrait};
 
+use crate::impl_Object_for;
+
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Accept {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Accept);
 
 impl Accept {
     pub fn new() -> Self {
@@ -17,27 +21,14 @@ impl Accept {
     }
 }
 
-impl StreamTrait for Accept {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Add {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Add);
 
 impl Add {
     pub fn new() -> Self {
@@ -49,27 +40,14 @@ impl Add {
     }
 }
 
-impl StreamTrait for Add {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Announce {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Announce);
 
 impl Announce {
     pub fn new() -> Self {
@@ -81,27 +59,14 @@ impl Announce {
     }
 }
 
-impl StreamTrait for Announce {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Arrive {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Arrive);
 
 impl Arrive {
     pub fn new() -> Self {
@@ -113,27 +78,14 @@ impl Arrive {
     }
 }
 
-impl StreamTrait for Arrive {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Block {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Block);
 
 impl Block {
     pub fn new() -> Self {
@@ -145,27 +97,14 @@ impl Block {
     }
 }
 
-impl StreamTrait for Block {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Create {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Create);
 
 impl Create {
     pub fn new() -> Self {
@@ -177,27 +116,14 @@ impl Create {
     }
 }
 
-impl StreamTrait for Create {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Delete {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Delete);
 
 impl Delete {
     pub fn new() -> Self {
@@ -209,27 +135,14 @@ impl Delete {
     }
 }
 
-impl StreamTrait for Delete {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Dislike {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Dislike);
 
 impl Dislike {
     pub fn new() -> Self {
@@ -241,27 +154,14 @@ impl Dislike {
     }
 }
 
-impl StreamTrait for Dislike {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Flag {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Flag);
 
 impl Flag {
     pub fn new() -> Self {
@@ -273,27 +173,14 @@ impl Flag {
     }
 }
 
-impl StreamTrait for Flag {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Follow {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Follow);
 
 impl Follow {
     pub fn new() -> Self {
@@ -305,27 +192,14 @@ impl Follow {
     }
 }
 
-impl StreamTrait for Follow {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Ignore {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Ignore);
 
 impl Ignore {
     pub fn new() -> Self {
@@ -337,27 +211,14 @@ impl Ignore {
     }
 }
 
-impl StreamTrait for Ignore {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Invite {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Invite);
 
 impl Invite {
     pub fn new() -> Self {
@@ -369,27 +230,14 @@ impl Invite {
     }
 }
 
-impl StreamTrait for Invite {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Join {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Join);
 
 impl Join {
     pub fn new() -> Self {
@@ -401,27 +249,14 @@ impl Join {
     }
 }
 
-impl StreamTrait for Join {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Leave {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Leave);
 
 impl Leave {
     pub fn new() -> Self {
@@ -433,27 +268,14 @@ impl Leave {
     }
 }
 
-impl StreamTrait for Leave {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Like {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Like);
 
 impl Like {
     pub fn new() -> Self {
@@ -465,27 +287,14 @@ impl Like {
     }
 }
 
-impl StreamTrait for Like {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Listen {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Listen);
 
 impl Listen {
     pub fn new() -> Self {
@@ -497,27 +306,14 @@ impl Listen {
     }
 }
 
-impl StreamTrait for Listen {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Move {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Move);
 
 impl Move {
     pub fn new() -> Self {
@@ -529,27 +325,14 @@ impl Move {
     }
 }
 
-impl StreamTrait for Move {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Offer {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Offer);
 
 impl Offer {
     pub fn new() -> Self {
@@ -561,27 +344,14 @@ impl Offer {
     }
 }
 
-impl StreamTrait for Offer {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Question {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Question);
 
 impl Question {
     pub fn new() -> Self {
@@ -593,27 +363,14 @@ impl Question {
     }
 }
 
-impl StreamTrait for Question {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Read {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Read);
 
 impl Read {
     pub fn new() -> Self {
@@ -625,27 +382,14 @@ impl Read {
     }
 }
 
-impl StreamTrait for Read {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Reject {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Reject);
 
 impl Reject {
     pub fn new() -> Self {
@@ -657,27 +401,14 @@ impl Reject {
     }
 }
 
-impl StreamTrait for Reject {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Remove {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Remove);
 
 impl Remove {
     pub fn new() -> Self {
@@ -689,27 +420,14 @@ impl Remove {
     }
 }
 
-impl StreamTrait for Remove {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct TentativeAccept {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(TentativeAccept);
 
 impl TentativeAccept {
     pub fn new() -> Self {
@@ -721,27 +439,14 @@ impl TentativeAccept {
     }
 }
 
-impl StreamTrait for TentativeAccept {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct TentativeReject {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(TentativeReject);
 
 impl TentativeReject {
     pub fn new() -> Self {
@@ -753,27 +458,14 @@ impl TentativeReject {
     }
 }
 
-impl StreamTrait for TentativeReject {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Travel {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Travel);
 
 impl Travel {
     pub fn new() -> Self {
@@ -785,27 +477,14 @@ impl Travel {
     }
 }
 
-impl StreamTrait for Travel {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Undo {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Undo);
 
 impl Undo {
     pub fn new() -> Self {
@@ -817,27 +496,14 @@ impl Undo {
     }
 }
 
-impl StreamTrait for Undo {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Update {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(Update);
 
 impl Update {
     pub fn new() -> Self {
@@ -849,27 +515,14 @@ impl Update {
     }
 }
 
-impl StreamTrait for Update {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct View {
     #[serde(flatten)]
     pub base: Object,
 }
+
+impl_Object_for!(View);
 
 impl View {
     pub fn new() -> Self {
@@ -878,20 +531,5 @@ impl View {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("View".to_string()))
-    }
-}
-
-impl StreamTrait for View {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
     }
 }

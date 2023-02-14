@@ -1,9 +1,11 @@
 use crate::{
-    property,
+    impl_Object_for, property,
     traits::{LinkTrait, ObjectTrait, StreamTrait},
 };
-use serde::{Deserialize, Serialize};
+
 use std::collections::HashMap;
+
+use serde::{Deserialize, Serialize};
 
 #[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
@@ -285,6 +287,8 @@ pub struct Activity {
     pub base: Object,
 }
 
+impl_Object_for!(Activity);
+
 impl Activity {
     pub fn new() -> Self {
         Self::default()
@@ -292,140 +296,6 @@ impl Activity {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Activity".to_string()))
-    }
-}
-
-impl StreamTrait for Activity {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for Activity {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
 
@@ -441,6 +311,8 @@ pub struct IntransitiveActivity {
     pub base: Object,
 }
 
+impl_Object_for!(IntransitiveActivity);
+
 impl IntransitiveActivity {
     pub fn new() -> Self {
         Self::default()
@@ -448,140 +320,6 @@ impl IntransitiveActivity {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("IntransitiveActivity".to_string()))
-    }
-}
-
-impl StreamTrait for IntransitiveActivity {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for IntransitiveActivity {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
 
@@ -599,6 +337,8 @@ pub struct Collection {
     pub base: Object,
 }
 
+impl_Object_for!(Collection);
+
 impl Collection {
     pub fn new() -> Self {
         Self::default()
@@ -606,140 +346,6 @@ impl Collection {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("Collection".to_string()))
-    }
-}
-
-impl StreamTrait for Collection {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for Collection {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
 
@@ -757,6 +363,8 @@ pub struct OrderedCollection {
     pub base: Object,
 }
 
+impl_Object_for!(OrderedCollection);
+
 impl OrderedCollection {
     pub fn new() -> Self {
         Self::default()
@@ -764,140 +372,6 @@ impl OrderedCollection {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("OrderedCollection".to_string()))
-    }
-}
-
-impl StreamTrait for OrderedCollection {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for OrderedCollection {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
 
@@ -913,6 +387,8 @@ pub struct CollectionPage {
     pub base: Object,
 }
 
+impl_Object_for!(CollectionPage);
+
 impl CollectionPage {
     pub fn new() -> Self {
         Self::default()
@@ -920,140 +396,6 @@ impl CollectionPage {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("CollectionPage".to_string()))
-    }
-}
-
-impl StreamTrait for CollectionPage {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for CollectionPage {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
 
@@ -1072,6 +414,8 @@ pub struct OrderedCollectionPage {
     pub base: Object,
 }
 
+impl_Object_for!(OrderedCollectionPage);
+
 impl OrderedCollectionPage {
     pub fn new() -> Self {
         Self::default()
@@ -1079,139 +423,5 @@ impl OrderedCollectionPage {
                 "https://www.w3.org/ns/activitystreams".to_string(),
             ))
             .r#type(property::Type::String("OrderedCollectionPage".to_string()))
-    }
-}
-
-impl StreamTrait for OrderedCollectionPage {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.base.atContext = Some(value);
-        self.to_owned()
-    }
-    fn id(&mut self, value: String) -> Self {
-        self.base.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.base.r#type = Some(value);
-        self.to_owned()
-    }
-}
-
-impl ObjectTrait for OrderedCollectionPage {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.base.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.base.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.base.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.base.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.base.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.base.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.base.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.base.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.base.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.base.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.base.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.base.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.base.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.base.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.base.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.base.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.base.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.base.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.base.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.base.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.base.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.base.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.base.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.base.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.base.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.base.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.base.url = Some(value);
-        self.to_owned()
     }
 }
