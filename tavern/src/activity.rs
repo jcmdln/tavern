@@ -1,6 +1,4 @@
-use crate::{core::Object, property, traits::StreamTrait};
-
-use crate::impl_Object_for;
+use crate::{core::Object, impl_Object_for, property, traits::StreamTrait};
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
