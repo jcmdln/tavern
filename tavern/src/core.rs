@@ -2,10 +2,8 @@ use crate::{
     impl_Object_for, property,
     traits::{LinkTrait, ObjectTrait, StreamTrait},
 };
-
-use std::collections::HashMap;
-
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 #[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]

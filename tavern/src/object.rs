@@ -1,5 +1,4 @@
 use crate::{core::Object, impl_Object_for, property, traits::StreamTrait};
-
 use serde::{Deserialize, Serialize};
 use serde_with::skip_serializing_none;
 

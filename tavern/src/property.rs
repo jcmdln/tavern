@@ -1,7 +1,6 @@
-use std::collections::HashMap;
-
 use crate::{core, object};
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 /// Describes one or more entities that either performed or are expected to
 /// perform the activity. Any single activity can have multiple actors. The
