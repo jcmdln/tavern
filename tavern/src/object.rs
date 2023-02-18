@@ -1,218 +1,284 @@
-use crate::{core::Object, impl_Object_for, property, traits::StreamTrait};
+use crate::{
+    core::Object,
+    property,
+    traits::{ObjectTrait, StreamTrait},
+};
 use serde::{Deserialize, Serialize};
-use serde_with::skip_serializing_none;
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Article {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Article);
-
-impl Article {
-    pub fn new() -> Self {
+impl StreamTrait for Article {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Article".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Article".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Article {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Audio {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Audio);
-
-impl Audio {
-    pub fn new() -> Self {
+impl StreamTrait for Audio {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Audio".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Audio".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Audio {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Document {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Document);
-
-impl Document {
-    pub fn new() -> Self {
+impl StreamTrait for Document {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Document".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Document".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Document {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Event {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Event);
-
-impl Event {
-    pub fn new() -> Self {
+impl StreamTrait for Event {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Event".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Event".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Event {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Image {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Image);
-
-impl Image {
-    pub fn new() -> Self {
+impl StreamTrait for Image {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Image".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Image".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Image {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Mention {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Mention);
-
-impl Mention {
-    pub fn new() -> Self {
+impl StreamTrait for Mention {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Mention".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Mention".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Mention {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Note {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Note);
-
-impl Note {
-    pub fn new() -> Self {
+impl StreamTrait for Note {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Note".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Note".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Note {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Page {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Page);
-
-impl Page {
-    pub fn new() -> Self {
+impl StreamTrait for Page {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Page".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Page".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Page {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Place {
-    pub accuracy: Option<f32>,
-    pub altitude: Option<f32>,
-    pub latitude: Option<f32>,
-    pub longitude: Option<f32>,
-    pub radius: Option<f32>,
-    pub units: Option<String>,
-
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Place);
+impl StreamTrait for Place {
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Place".into()))
+            .to_owned()
+    }
 
-impl Place {
-    pub fn new() -> Place {
-        Place::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Place".to_string()))
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Place {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Profile {
     pub describes: Option<property::Describes>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Profile);
+impl StreamTrait for Profile {
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Profile".into()))
+            .to_owned()
+    }
 
-impl Profile {
-    pub fn new() -> Profile {
-        Profile::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Profile".to_string()))
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Profile {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Relationship {
     pub object: Option<property::Object>,
@@ -220,61 +286,82 @@ pub struct Relationship {
     pub subject: Option<property::Subject>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Relationship);
+impl StreamTrait for Relationship {
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Relationship".into()))
+            .to_owned()
+    }
 
-impl Relationship {
-    pub fn new() -> Relationship {
-        Relationship::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Relationship".to_string()))
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Relationship {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(dead_code, non_snake_case)]
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Tombstone {
     pub deleted: Option<String>,
     pub formerType: Option<property::FormerType>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Tombstone);
+impl StreamTrait for Tombstone {
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Tombstone".into()))
+            .to_owned()
+    }
 
-impl Tombstone {
-    pub fn new() -> Tombstone {
-        Tombstone::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Tombstone".to_string()))
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Tombstone {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
 #[allow(non_snake_case)]
-#[skip_serializing_none]
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Video {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Video);
-
-impl Video {
-    pub fn new() -> Self {
+impl StreamTrait for Video {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Video".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Video".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Video {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }

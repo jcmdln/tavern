@@ -1,21 +1,32 @@
-use crate::{core::Object, impl_Object_for, property, traits::StreamTrait};
+use crate::{
+    core::Object,
+    property,
+    traits::{ObjectTrait, StreamTrait},
+};
 
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Actor {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Actor);
-
-impl Actor {
-    pub fn new() -> Self {
+impl StreamTrait for Actor {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Actor".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Actor".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Actor {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -23,18 +34,25 @@ impl Actor {
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Application {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Application);
-
-impl Application {
-    pub fn new() -> Self {
+impl StreamTrait for Application {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Application".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Application".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Application {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -42,18 +60,25 @@ impl Application {
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Group {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Group);
-
-impl Group {
-    pub fn new() -> Self {
+impl StreamTrait for Group {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Group".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Group".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Group {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -61,18 +86,25 @@ impl Group {
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Organization {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Organization);
-
-impl Organization {
-    pub fn new() -> Self {
+impl StreamTrait for Organization {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Organization".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Organization".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Organization {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -80,18 +112,25 @@ impl Organization {
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Person {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Person);
-
-impl Person {
-    pub fn new() -> Self {
+impl StreamTrait for Person {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Person".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Person".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Person {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -99,17 +138,24 @@ impl Person {
 #[derive(Debug, Default, Clone, serde::Deserialize, serde::Serialize)]
 pub struct Service {
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Service);
-
-impl Service {
-    pub fn new() -> Self {
+impl StreamTrait for Service {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Service".to_string()))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Service".into()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Service {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }

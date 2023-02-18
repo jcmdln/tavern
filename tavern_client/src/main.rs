@@ -1,13 +1,8 @@
-use tavern::traits::{ObjectTrait, StreamTrait};
-use tavern::{activity, actor, core, object, property};
+use tavern::traits::StreamTrait;
+use tavern::{activity, actor, core, object};
 
 fn main() {
-    let thing = core::Object::new()
-        .r#type(property::Type::String("Thing".to_string()))
-        .id("http://domain.tld".to_string())
-        .to(property::To::String("someone".to_string()))
-        .to_string()
-        .unwrap();
+    let thing = core::Object::new().to_value().unwrap();
     println!("{}", thing);
 
     println!("\nCore:");

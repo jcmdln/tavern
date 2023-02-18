@@ -10,9 +10,8 @@ use std::collections::HashMap;
 ///
 /// Domain: `Object`
 ///
-/// Range: `Object` | `Link`
-///
-/// Subproperty Of: attributedTo
+/// Subproperty Of: `attributedTo`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Actor {
@@ -29,8 +28,7 @@ pub enum Actor {
 /// URI: https://www.w3.org/ns/activitystreams#anyOf
 ///
 /// Domain: `Question`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AnyOf {
@@ -47,8 +45,7 @@ pub enum AnyOf {
 /// URI: @context
 ///
 /// Domain: `Object` | `Link`
-///
-/// Range: `Object`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AtContext {
@@ -64,8 +61,7 @@ pub enum AtContext {
 /// URI: https://www.w3.org/ns/activitystreams#attachment
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Attachment {
@@ -82,8 +78,7 @@ pub enum Attachment {
 /// URI: https://www.w3.org/ns/activitystreams#attributedTo
 ///
 /// Domain: `Link` | `Object`
-///
-/// Range: `Link` | `Object`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AttributedTo {
@@ -99,8 +94,7 @@ pub enum AttributedTo {
 /// URI: https://www.w3.org/ns/activitystreams#audience
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Audience {
@@ -116,8 +110,7 @@ pub enum Audience {
 /// URI: https://www.w3.org/ns/activitystreams#bcc
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Bcc {
@@ -133,8 +126,7 @@ pub enum Bcc {
 /// URI: https://www.w3.org/ns/activitystreams#bto
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Bto {
@@ -150,8 +142,7 @@ pub enum Bto {
 /// URI: https://www.w3.org/ns/activitystreams#cc
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Cc {
@@ -167,8 +158,7 @@ pub enum Cc {
 /// URI: https://www.w3.org/ns/activitystreams#closed
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Closed {
@@ -189,8 +179,7 @@ pub enum Closed {
 /// URI: https://www.w3.org/ns/activitystreams#context
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Context {
@@ -206,8 +195,7 @@ pub enum Context {
 /// URI: https://www.w3.org/ns/activitystreams#current
 ///
 /// Domain: Collection
-///
-/// Range: CollectionPage | Link
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Current {
@@ -223,9 +211,8 @@ pub enum Current {
 ///
 /// Domain: `Profile`
 ///
-/// Range: `Object`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Describes {
@@ -240,9 +227,8 @@ pub enum Describes {
 ///
 /// Domain: `Collection`
 ///
-/// Range: `CollectionPage` | `Link`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum First {
@@ -258,9 +244,8 @@ pub enum First {
 ///
 /// Domain: `Profile`
 ///
-/// Range: `Object`
-///
 /// Functional: `False`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum FormerType {
@@ -273,8 +258,7 @@ pub enum FormerType {
 /// URI: https://www.w3.org/ns/activitystreams#generator
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Generator {
@@ -291,8 +275,7 @@ pub enum Generator {
 /// URI: https://www.w3.org/ns/activitystreams#icon
 ///
 /// Domain: `Object`
-///
-/// Range: `Image` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Icon {
@@ -308,8 +291,7 @@ pub enum Icon {
 /// URI: https://www.w3.org/ns/activitystreams#image
 ///
 /// Domain: `Object`
-///
-/// Range: `Image` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Image {
@@ -324,8 +306,7 @@ pub enum Image {
 /// URI: https://www.w3.org/ns/activitystreams#inReplyTo
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum InReplyTo {
@@ -341,8 +322,7 @@ pub enum InReplyTo {
 /// URI: https://www.w3.org/ns/activitystreams#instrument
 ///
 /// Domain: `Activity`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Instrument {
@@ -355,8 +335,7 @@ pub enum Instrument {
 /// URI: https://www.w3.org/ns/activitystreams#items
 ///
 /// Domain: `Collection`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Items {
@@ -373,9 +352,8 @@ pub enum Items {
 ///
 /// Domain: `Collection`
 ///
-/// Range: `CollectionPage` | `Link`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Last {
@@ -388,8 +366,7 @@ pub enum Last {
 /// URI: https://www.w3.org/ns/activitystreams#location
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Location {
@@ -405,9 +382,8 @@ pub enum Location {
 ///
 /// Domain: `CollectionPage`
 ///
-/// Range: `CollectionPage` | `Link`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Next {
@@ -427,9 +403,8 @@ pub enum Next {
 ///
 /// Domain: `Activity` | `Relationship`
 ///
-/// Range: `Object` | `Link`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Object {
@@ -446,8 +421,7 @@ pub enum Object {
 /// URI: https://www.w3.org/ns/activitystreams#oneOf
 ///
 /// Domain: `Question`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum OneOf {
@@ -465,8 +439,7 @@ pub enum OneOf {
 /// URI: https://www.w3.org/ns/activitystreams#origin
 ///
 /// Domain: `Activity`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Origin {
@@ -480,9 +453,8 @@ pub enum Origin {
 ///
 /// Domain: `CollectionPage`
 ///
-/// Range: `Link` | `Collection`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum PartOf {
@@ -497,9 +469,8 @@ pub enum PartOf {
 ///
 /// Domain: `CollectionPage`
 ///
-/// Range: `CollectionPage` | `Link`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Prev {
@@ -513,8 +484,7 @@ pub enum Prev {
 /// URI: https://www.w3.org/ns/activitystreams#preview
 ///
 /// Domain: `Link` | `Object`
-///
-/// Range: `Link` | `Object`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Preview {
@@ -532,8 +502,7 @@ pub enum Preview {
 /// URI: https://www.w3.org/ns/activitystreams#rel
 ///
 /// Domain: `Link`
-///
-/// Range: [RFC5988] or [HTML5] Link Relation
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Rel {
@@ -547,8 +516,7 @@ pub enum Rel {
 /// URI: https://www.w3.org/ns/activitystreams#relationship
 ///
 /// Domain: `Relationship`
-///
-/// Range: `Object`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Relationship {
@@ -563,9 +531,8 @@ pub enum Relationship {
 ///
 /// Domain: `Object`
 ///
-/// Range: `Collection`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Replies {
@@ -579,8 +546,7 @@ pub enum Replies {
 /// URI: https://www.w3.org/ns/activitystreams#result
 ///
 /// Domain: `Activity`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Result {
@@ -596,9 +562,8 @@ pub enum Result {
 ///
 /// Domain: `Relationship`
 ///
-/// Range: `Link` | `Object`
-///
 /// Functional: `True`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Subject {
@@ -614,8 +579,7 @@ pub enum Subject {
 /// URI: https://www.w3.org/ns/activitystreams#tag
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Tag {
@@ -635,8 +599,7 @@ pub enum Tag {
 /// URI: https://www.w3.org/ns/activitystreams#target
 ///
 /// Domain: `Activity`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Target {
@@ -652,8 +615,7 @@ pub enum Target {
 /// URI: https://www.w3.org/ns/activitystreams#to
 ///
 /// Domain: `Object`
-///
-/// Range: `Object` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum To {
@@ -668,8 +630,7 @@ pub enum To {
 /// URI: @type
 ///
 /// Domain: `Object` | `Link`
-///
-/// Range: anyURI
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Type {
@@ -683,8 +644,7 @@ pub enum Type {
 /// URI: https://www.w3.org/ns/activitystreams#url
 ///
 /// Domain: `Object`
-///
-/// Range: `xsd:anyURI` | `Link`
+#[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Url {

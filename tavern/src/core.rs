@@ -1,20 +1,29 @@
 use crate::{
-    impl_Object_for, property,
-    traits::{LinkTrait, ObjectTrait, StreamTrait},
+    property,
+    traits::{
+        CollectionPageTrait, CollectionTrait, LinkTrait, ObjectTrait, OrderedCollectionPageTrait,
+        OrderedCollectionTrait, StreamTrait,
+    },
 };
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+
+/// Everything is a `Stream` which inherits base properties that belong to all
+/// `Object`s and `Link`s.
+#[allow(non_snake_case)]
+#[serde_with::skip_serializing_none]
+#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+pub struct Stream {
+    #[serde(rename = "@context")]
+    pub atContext: Option<property::AtContext>,
+    pub id: Option<String>,
+    pub r#type: Option<property::Type>,
+}
 
 #[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Object {
-    // Stream
-    #[serde(rename = "@context")]
-    pub atContext: Option<property::AtContext>,
-    pub id: Option<String>,
-    pub r#type: Option<property::Type>,
-    // Object
     pub attachment: Option<property::Attachment>,
     pub attributedTo: Option<property::AttributedTo>,
     pub audience: Option<property::Audience>,
@@ -44,149 +53,27 @@ pub struct Object {
     pub to: Option<property::To>,
     pub updated: Option<String>,
     pub url: Option<property::Url>,
-}
 
-impl Object {
-    pub fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Object".to_string()))
-    }
+    #[serde(flatten)]
+    pub extends: Stream,
 }
 
 impl StreamTrait for Object {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.atContext = Some(value);
-        self.to_owned()
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Object".into()))
+            .to_owned()
     }
-    fn id(&mut self, value: String) -> Self {
-        self.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.r#type = Some(value);
-        self.to_owned()
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.extends
     }
 }
 
 impl ObjectTrait for Object {
-    fn attachment(&mut self, value: property::Attachment) -> Self {
-        self.attachment = Some(value);
-        self.to_owned()
-    }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> Self {
-        self.attributedTo = Some(value);
-        self.to_owned()
-    }
-    fn audience(&mut self, value: property::Audience) -> Self {
-        self.audience = Some(value);
-        self.to_owned()
-    }
-    fn bcc(&mut self, value: property::Bcc) -> Self {
-        self.bcc = Some(value);
-        self.to_owned()
-    }
-    fn bto(&mut self, value: property::Bto) -> Self {
-        self.bto = Some(value);
-        self.to_owned()
-    }
-    fn cc(&mut self, value: property::Cc) -> Self {
-        self.cc = Some(value);
-        self.to_owned()
-    }
-    fn content(&mut self, value: String) -> Self {
-        self.content = Some(value);
-        self.to_owned()
-    }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.contentMap = Some(value);
-        self.to_owned()
-    }
-    fn context(&mut self, value: property::Context) -> Self {
-        self.context = Some(value);
-        self.to_owned()
-    }
-    fn duration(&mut self, value: String) -> Self {
-        self.duration = Some(value);
-        self.to_owned()
-    }
-    fn endTime(&mut self, value: String) -> Self {
-        self.endTime = Some(value);
-        self.to_owned()
-    }
-    fn generator(&mut self, value: property::Generator) -> Self {
-        self.generator = Some(value);
-        self.to_owned()
-    }
-    fn icon(&mut self, value: property::Icon) -> Self {
-        self.icon = Some(value);
-        self.to_owned()
-    }
-    fn image(&mut self, value: property::Image) -> Self {
-        self.image = Some(value);
-        self.to_owned()
-    }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> Self {
-        self.inReplyTo = Some(value);
-        self.to_owned()
-    }
-    fn location(&mut self, value: property::Location) -> Self {
-        self.location = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.name = Some(value);
-        self.to_owned()
-    }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.nameMap = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.preview = Some(value);
-        self.to_owned()
-    }
-    fn published(&mut self, value: String) -> Self {
-        self.published = Some(value);
-        self.to_owned()
-    }
-    fn replies(&mut self, value: property::Replies) -> Self {
-        self.replies = Some(value);
-        self.to_owned()
-    }
-    fn startTime(&mut self, value: String) -> Self {
-        self.startTime = Some(value);
-        self.to_owned()
-    }
-    fn summary(&mut self, value: String) -> Self {
-        self.summary = Some(value);
-        self.to_owned()
-    }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> Self {
-        self.summaryMap = Some(value);
-        self.to_owned()
-    }
-    fn tag(&mut self, value: property::Tag) -> Self {
-        self.tag = Some(value);
-        self.to_owned()
-    }
-    fn to(&mut self, value: property::To) -> Self {
-        self.to = Some(value);
-        self.to_owned()
-    }
-    fn updated(&mut self, value: String) -> Self {
-        self.updated = Some(value);
-        self.to_owned()
-    }
-    fn url(&mut self, value: property::Url) -> Self {
-        self.url = Some(value);
-        self.to_owned()
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        self
     }
 }
 
@@ -194,12 +81,6 @@ impl ObjectTrait for Object {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Link {
-    // Stream
-    #[serde(rename = "@context")]
-    pub atContext: Option<property::AtContext>,
-    pub id: Option<String>,
-    pub r#type: Option<property::Type>,
-    // Link
     pub href: Option<String>,
     pub hreflang: Option<String>,
     pub mediaType: Option<String>,
@@ -208,65 +89,27 @@ pub struct Link {
     pub preview: Option<property::Preview>,
     pub height: Option<u64>,
     pub width: Option<u64>,
-}
 
-impl Link {
-    pub fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
-            .r#type(property::Type::String("Link".to_string()))
-    }
+    #[serde(flatten)]
+    pub extends: Stream,
 }
 
 impl StreamTrait for Link {
-    fn atContext(&mut self, value: property::AtContext) -> Self {
-        self.atContext = Some(value);
-        self.to_owned()
+    fn new() -> Self {
+        Self::default()
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
+            .r#type(property::Type::String("Link".to_string()))
+            .to_owned()
     }
-    fn id(&mut self, value: String) -> Self {
-        self.id = Some(value);
-        self.to_owned()
-    }
-    fn r#type(&mut self, value: property::Type) -> Self {
-        self.r#type = Some(value);
-        self.to_owned()
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.extends
     }
 }
 
 impl LinkTrait for Link {
-    fn href(&mut self, value: String) -> Self {
-        self.href = Some(value);
-        self.to_owned()
-    }
-    fn rel(&mut self, value: property::Rel) -> Self {
-        self.rel = Some(value);
-        self.to_owned()
-    }
-    fn mediaType(&mut self, value: String) -> Self {
-        self.mediaType = Some(value);
-        self.to_owned()
-    }
-    fn name(&mut self, value: String) -> Self {
-        self.name = Some(value);
-        self.to_owned()
-    }
-    fn hreflang(&mut self, value: String) -> Self {
-        self.hreflang = Some(value);
-        self.to_owned()
-    }
-    fn height(&mut self, value: u64) -> Self {
-        self.height = Some(value);
-        self.to_owned()
-    }
-    fn width(&mut self, value: u64) -> Self {
-        self.width = Some(value);
-        self.to_owned()
-    }
-    fn preview(&mut self, value: property::Preview) -> Self {
-        self.preview = Some(value);
-        self.to_owned()
+    fn as_link(&mut self) -> &mut Self {
+        self
     }
 }
 
@@ -282,18 +125,25 @@ pub struct Activity {
     pub instrument: Option<property::Instrument>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Activity);
-
-impl Activity {
-    pub fn new() -> Self {
+impl StreamTrait for Activity {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("Activity".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Activity {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -301,23 +151,32 @@ impl Activity {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct IntransitiveActivity {
-    pub anyOf: Option<property::AnyOf>,
-    pub closed: Option<property::Closed>,
-    pub oneOf: Option<property::OneOf>,
+    pub actor: Option<property::Actor>,
+    pub target: Option<property::Target>,
+    pub result: Option<property::Result>,
+    pub origin: Option<property::Origin>,
+    pub instrument: Option<property::Instrument>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(IntransitiveActivity);
-
-impl IntransitiveActivity {
-    pub fn new() -> Self {
+impl StreamTrait for IntransitiveActivity {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("IntransitiveActivity".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for IntransitiveActivity {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -332,18 +191,25 @@ pub struct Collection {
     pub items: Option<property::Items>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Object,
 }
 
-impl_Object_for!(Collection);
-
-impl Collection {
-    pub fn new() -> Self {
+impl StreamTrait for Collection {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("Collection".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for Collection {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.extends
     }
 }
 
@@ -358,18 +224,31 @@ pub struct OrderedCollection {
     pub items: Option<property::Items>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Collection,
 }
 
-impl_Object_for!(OrderedCollection);
-
-impl OrderedCollection {
-    pub fn new() -> Self {
+impl StreamTrait for OrderedCollection {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("OrderedCollection".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_collection().as_object().extends
+    }
+}
+
+impl CollectionTrait for OrderedCollection {
+    fn as_collection(&mut self) -> &mut crate::core::Collection {
+        &mut self.extends
+    }
+}
+
+impl OrderedCollectionTrait for OrderedCollection {
+    fn as_ordered_collection(&mut self) -> &mut crate::core::OrderedCollection {
+        self
     }
 }
 
@@ -382,18 +261,37 @@ pub struct CollectionPage {
     pub prev: Option<property::Prev>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: Box<Collection>,
 }
 
-impl_Object_for!(CollectionPage);
-
-impl CollectionPage {
-    pub fn new() -> Self {
+impl StreamTrait for CollectionPage {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("CollectionPage".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for CollectionPage {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.as_collection().extends
+    }
+}
+
+impl CollectionTrait for CollectionPage {
+    fn as_collection(&mut self) -> &mut crate::core::Collection {
+        &mut self.as_collection_page().extends
+    }
+}
+
+impl CollectionPageTrait for CollectionPage {
+    fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage {
+        self
     }
 }
 
@@ -401,25 +299,45 @@ impl CollectionPage {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct OrderedCollectionPage {
-    startIndex: Option<u64>,
-
-    // CollectionPage
-    pub partOf: Option<property::PartOf>,
-    pub next: Option<property::Next>,
-    pub prev: Option<property::Prev>,
+    pub startIndex: Option<u64>,
 
     #[serde(flatten)]
-    pub base: Object,
+    pub extends: CollectionPage,
 }
 
-impl_Object_for!(OrderedCollectionPage);
-
-impl OrderedCollectionPage {
-    pub fn new() -> Self {
+impl StreamTrait for OrderedCollectionPage {
+    fn new() -> Self {
         Self::default()
-            .atContext(property::AtContext::String(
-                "https://www.w3.org/ns/activitystreams".to_string(),
-            ))
+            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
             .r#type(property::Type::String("OrderedCollectionPage".to_string()))
+            .to_owned()
+    }
+
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        &mut self.as_object().extends
+    }
+}
+
+impl ObjectTrait for OrderedCollectionPage {
+    fn as_object(&mut self) -> &mut crate::core::Object {
+        &mut self.as_collection().extends
+    }
+}
+
+impl CollectionTrait for OrderedCollectionPage {
+    fn as_collection(&mut self) -> &mut crate::core::Collection {
+        &mut self.as_collection_page().extends
+    }
+}
+
+impl CollectionPageTrait for OrderedCollectionPage {
+    fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage {
+        &mut self.extends
+    }
+}
+
+impl OrderedCollectionPageTrait for OrderedCollectionPage {
+    fn as_ordered_collection_page(&mut self) -> &mut crate::core::OrderedCollectionPage {
+        self
     }
 }
