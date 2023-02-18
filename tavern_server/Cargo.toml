@@ -19,5 +19,5 @@ axum = "0.6.2"
 #zeromq = {"0.3.3"}
 
 [dependencies.tavern]
-version = "0.0.2"
+version = "*"
 path = "../tavern"
