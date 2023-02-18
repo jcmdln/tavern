@@ -1,6 +1,8 @@
 {
   "editor.insertSpaces": true,
 
+  "evenBetterToml.formatter.columnWidth": 100,
+
   "files.associations": {
     ".clang-format": "yaml",
     ".clang-tidy": "yaml",
