@@ -1,5 +1,5 @@
 use crate::{
-    property,
+    core, property,
     traits::{
         CollectionPageTrait, CollectionTrait, LinkTrait, ObjectTrait, OrderedCollectionPageTrait,
         OrderedCollectionTrait, StreamTrait,
@@ -10,62 +10,112 @@ use std::collections::HashMap;
 
 /// Everything is a `Stream` which inherits base properties that belong to all
 /// `Object`s and `Link`s.
-#[allow(non_snake_case)]
+
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Stream {
     #[serde(rename = "@context")]
-    pub atContext: Option<property::AtContext>,
+    pub at_context: Option<property::AtContext>,
     pub id: Option<String>,
-    pub r#type: Option<property::Type>,
+    #[serde(rename = "type")]
+    pub kind: Option<property::Type>,
 }
 
-#[allow(non_snake_case)]
+impl Default for Stream {
+    fn default() -> Self {
+        Self {
+            at_context: Some(property::AtContext::String(
+                "https://www.w3.org/ns/activitystreams".into(),
+            )),
+            id: None,
+            kind: None,
+        }
+    }
+}
+
+impl StreamTrait for Stream {
+    fn as_stream(&mut self) -> &mut crate::core::Stream {
+        self
+    }
+}
+
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Object {
     #[serde(flatten)]
     pub extends: Stream,
 
-    pub attachment: Option<property::Attachment>,
-    pub attributedTo: Option<property::AttributedTo>,
-    pub audience: Option<property::Audience>,
-    pub bcc: Option<property::Bcc>,
+    pub to: Option<property::To>,
     pub bto: Option<property::Bto>,
     pub cc: Option<property::Cc>,
+    pub bcc: Option<property::Bcc>,
+
+    pub attachment: Option<property::Attachment>,
+    pub attributed_to: Option<property::AttributedTo>,
+    pub audience: Option<property::Audience>,
+    pub content_map: Option<HashMap<String, String>>,
     pub content: Option<String>,
-    pub contentMap: Option<HashMap<String, String>>,
     pub context: Option<property::Context>,
     pub duration: Option<String>,
-    pub endTime: Option<String>,
+    pub end_time: Option<String>,
     pub generator: Option<property::Generator>,
     pub icon: Option<property::Icon>,
     pub image: Option<property::Image>,
-    pub inReplyTo: Option<property::InReplyTo>,
+    pub in_reply_to: Option<property::InReplyTo>,
     pub location: Option<property::Location>,
-    pub mediaType: Option<String>,
+    pub media_type: Option<String>,
+    pub name_map: Option<HashMap<String, String>>,
     pub name: Option<String>,
-    pub nameMap: Option<HashMap<String, String>>,
     pub preview: Option<property::Preview>,
     pub published: Option<String>,
     pub replies: Option<property::Replies>,
-    pub startTime: Option<String>,
+    pub start_time: Option<String>,
+    pub summary_map: Option<HashMap<String, String>>,
     pub summary: Option<String>,
-    pub summaryMap: Option<HashMap<String, String>>,
     pub tag: Option<property::Tag>,
-    pub to: Option<property::To>,
     pub updated: Option<String>,
     pub url: Option<property::Url>,
 }
 
-impl StreamTrait for Object {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("Object".into()))
-            .to_owned()
+impl Default for Object {
+    fn default() -> Self {
+        Self {
+            extends: Stream::default().kind(property::Type::String("Object".into())).clone(),
+            to: None,
+            bto: None,
+            cc: None,
+            bcc: None,
+            attachment: None,
+            attributed_to: None,
+            audience: None,
+            content_map: None,
+            content: None,
+            context: None,
+            duration: None,
+            end_time: None,
+            generator: None,
+            icon: None,
+            image: None,
+            in_reply_to: None,
+            location: None,
+            media_type: None,
+            name_map: None,
+            name: None,
+            preview: None,
+            published: None,
+            replies: None,
+            start_time: None,
+            summary_map: None,
+            summary: None,
+            tag: None,
+            updated: None,
+            url: None,
+        }
     }
+}
 
+impl StreamTrait for Object {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.extends
     }
@@ -77,16 +127,16 @@ impl ObjectTrait for Object {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Link {
     #[serde(flatten)]
     pub extends: Stream,
 
     pub href: Option<String>,
     pub hreflang: Option<String>,
-    pub mediaType: Option<String>,
+    pub media_type: Option<String>,
     pub name: Option<String>,
     pub rel: Option<property::Rel>,
     pub preview: Option<property::Preview>,
@@ -94,14 +144,23 @@ pub struct Link {
     pub width: Option<u64>,
 }
 
-impl StreamTrait for Link {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("Link".to_string()))
-            .to_owned()
+impl Default for Link {
+    fn default() -> Self {
+        Self {
+            extends: Stream::default().kind(property::Type::String("Link".into())).clone(),
+            href: None,
+            hreflang: None,
+            media_type: None,
+            name: None,
+            rel: None,
+            preview: None,
+            height: None,
+            width: None,
+        }
     }
+}
 
+impl StreamTrait for Link {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.extends
     }
@@ -113,9 +172,8 @@ impl LinkTrait for Link {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct Activity {
     #[serde(flatten)]
     pub extends: Object,
@@ -128,14 +186,21 @@ pub struct Activity {
     pub instrument: Option<property::Instrument>,
 }
 
-impl StreamTrait for Activity {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("Activity".to_string()))
-            .to_owned()
+impl Default for Activity {
+    fn default() -> Self {
+        Self {
+            extends: Object::default().kind(property::Type::String("Activity".into())).clone(),
+            actor: None,
+            object: None,
+            target: None,
+            result: None,
+            origin: None,
+            instrument: None,
+        }
     }
+}
 
+impl StreamTrait for Activity {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_object().extends
     }
@@ -147,9 +212,8 @@ impl ObjectTrait for Activity {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct IntransitiveActivity {
     #[serde(flatten)]
     pub extends: Object,
@@ -161,14 +225,22 @@ pub struct IntransitiveActivity {
     pub instrument: Option<property::Instrument>,
 }
 
-impl StreamTrait for IntransitiveActivity {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("IntransitiveActivity".to_string()))
-            .to_owned()
+impl Default for IntransitiveActivity {
+    fn default() -> Self {
+        Self {
+            extends: Object::default()
+                .kind(property::Type::String("IntransitiveActivity".into()))
+                .clone(),
+            actor: None,
+            target: None,
+            result: None,
+            origin: None,
+            instrument: None,
+        }
     }
+}
 
+impl StreamTrait for IntransitiveActivity {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_object().extends
     }
@@ -180,28 +252,34 @@ impl ObjectTrait for IntransitiveActivity {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Collection {
     #[serde(flatten)]
     pub extends: Object,
 
-    pub totalItems: Option<u64>,
+    pub total_items: Option<u64>,
     pub current: Option<property::Current>,
     pub first: Option<property::First>,
     pub last: Option<property::Last>,
     pub items: Option<property::Items>,
 }
 
-impl StreamTrait for Collection {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("Collection".to_string()))
-            .to_owned()
+impl Default for Collection {
+    fn default() -> Self {
+        Self {
+            extends: Object::default().kind(property::Type::String("Collection".into())).clone(),
+            total_items: None,
+            current: None,
+            first: None,
+            last: None,
+            items: None,
+        }
     }
+}
 
+impl StreamTrait for Collection {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_object().extends
     }
@@ -213,28 +291,25 @@ impl ObjectTrait for Collection {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct OrderedCollection {
     #[serde(flatten)]
     pub extends: Collection,
+}
 
-    pub totalItems: Option<u64>,
-    pub current: Option<property::Current>,
-    pub first: Option<property::First>,
-    pub last: Option<property::Last>,
-    pub items: Option<property::Items>,
+impl Default for OrderedCollection {
+    fn default() -> Self {
+        Self {
+            extends: Collection::default()
+                .kind(property::Type::String("OrderedCollection".into()))
+                .clone(),
+        }
+    }
 }
 
 impl StreamTrait for OrderedCollection {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("OrderedCollection".to_string()))
-            .to_owned()
-    }
-
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_collection().as_object().extends
     }
@@ -252,26 +327,34 @@ impl OrderedCollectionTrait for OrderedCollection {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct CollectionPage {
     #[serde(flatten)]
     pub extends: Box<Collection>,
 
-    pub partOf: Option<property::PartOf>,
+    pub part_of: Option<property::PartOf>,
     pub next: Option<property::Next>,
     pub prev: Option<property::Prev>,
 }
 
-impl StreamTrait for CollectionPage {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("CollectionPage".to_string()))
-            .to_owned()
+impl Default for CollectionPage {
+    fn default() -> Self {
+        Self {
+            extends: Box::new(
+                core::Collection::default()
+                    .kind(property::Type::String("CollectionPage".into()))
+                    .clone(),
+            ),
+            part_of: None,
+            next: None,
+            prev: None,
+        }
     }
+}
 
+impl StreamTrait for CollectionPage {
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_object().extends
     }
@@ -295,24 +378,28 @@ impl CollectionPageTrait for CollectionPage {
     }
 }
 
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Default, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct OrderedCollectionPage {
     #[serde(flatten)]
     pub extends: CollectionPage,
 
-    pub startIndex: Option<u64>,
+    pub start_index: Option<u64>,
+}
+
+impl Default for OrderedCollectionPage {
+    fn default() -> Self {
+        Self {
+            extends: core::CollectionPage::default()
+                .kind(property::Type::String("OrderedCollectionPage".into()))
+                .clone(),
+            start_index: None,
+        }
+    }
 }
 
 impl StreamTrait for OrderedCollectionPage {
-    fn new() -> Self {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("OrderedCollectionPage".to_string()))
-            .to_owned()
-    }
-
     fn as_stream(&mut self) -> &mut crate::core::Stream {
         &mut self.as_object().extends
     }

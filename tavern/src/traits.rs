@@ -3,18 +3,9 @@ use serde::Serialize;
 use serde_json::{Error, Value};
 use std::collections::HashMap;
 
-#[allow(non_snake_case)]
 pub trait StreamTrait {
     fn as_stream(&mut self) -> &mut crate::core::Stream;
 
-    fn new() -> Self
-    where
-        Self: Clone + Default,
-    {
-        Self::default()
-            .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .to_owned()
-    }
     fn to_string(&self) -> Result<String, Error>
     where
         Self: Serialize,
@@ -28,8 +19,8 @@ pub trait StreamTrait {
         serde_json::to_value(self)
     }
 
-    fn atContext(&mut self, value: property::AtContext) -> &mut Self {
-        self.as_stream().atContext = Some(value);
+    fn at_context(&mut self, value: property::AtContext) -> &mut Self {
+        self.as_stream().at_context = Some(value);
         self
     }
     fn id(&mut self, value: String) -> &mut Self {
@@ -37,14 +28,13 @@ pub trait StreamTrait {
         stream.id = Some(value);
         self
     }
-    fn r#type(&mut self, value: property::Type) -> &mut Self {
+    fn kind(&mut self, value: property::Type) -> &mut Self {
         let mut stream = self.as_stream();
-        stream.r#type = Some(value);
+        stream.kind = Some(value);
         self
     }
 }
 
-#[allow(non_snake_case)]
 pub trait ObjectTrait: StreamTrait {
     fn as_object(&mut self) -> &mut crate::core::Object;
 
@@ -52,8 +42,8 @@ pub trait ObjectTrait: StreamTrait {
         self.as_object().attachment = Some(value);
         self
     }
-    fn attributedTo(&mut self, value: property::AttributedTo) -> &mut Self {
-        self.as_object().attributedTo = Some(value);
+    fn attributed_to(&mut self, value: property::AttributedTo) -> &mut Self {
+        self.as_object().attributed_to = Some(value);
         self
     }
     fn audience(&mut self, value: property::Audience) -> &mut Self {
@@ -76,8 +66,8 @@ pub trait ObjectTrait: StreamTrait {
         self.as_object().content = Some(value);
         self
     }
-    fn contentMap(&mut self, value: HashMap<String, String>) -> &mut Self {
-        self.as_object().contentMap = Some(value);
+    fn content_map(&mut self, value: HashMap<String, String>) -> &mut Self {
+        self.as_object().content_map = Some(value);
         self
     }
     fn context(&mut self, value: property::Context) -> &mut Self {
@@ -88,8 +78,8 @@ pub trait ObjectTrait: StreamTrait {
         self.as_object().duration = Some(value);
         self
     }
-    fn endTime(&mut self, value: String) -> &mut Self {
-        self.as_object().endTime = Some(value);
+    fn end_time(&mut self, value: String) -> &mut Self {
+        self.as_object().end_time = Some(value);
         self
     }
     fn generator(&mut self, value: property::Generator) -> &mut Self {
@@ -104,24 +94,24 @@ pub trait ObjectTrait: StreamTrait {
         self.as_object().image = Some(value);
         self
     }
-    fn inReplyTo(&mut self, value: property::InReplyTo) -> &mut Self {
-        self.as_object().inReplyTo = Some(value);
+    fn in_reply_to(&mut self, value: property::InReplyTo) -> &mut Self {
+        self.as_object().in_reply_to = Some(value);
         self
     }
     fn location(&mut self, value: property::Location) -> &mut Self {
         self.as_object().location = Some(value);
         self
     }
-    fn mediaType(&mut self, value: String) -> &mut Self {
-        self.as_object().mediaType = Some(value);
+    fn media_type(&mut self, value: String) -> &mut Self {
+        self.as_object().media_type = Some(value);
         self
     }
     fn name(&mut self, value: String) -> &mut Self {
         self.as_object().name = Some(value);
         self
     }
-    fn nameMap(&mut self, value: HashMap<String, String>) -> &mut Self {
-        self.as_object().nameMap = Some(value);
+    fn name_map(&mut self, value: HashMap<String, String>) -> &mut Self {
+        self.as_object().name_map = Some(value);
         self
     }
     fn preview(&mut self, value: property::Preview) -> &mut Self {
@@ -136,16 +126,16 @@ pub trait ObjectTrait: StreamTrait {
         self.as_object().replies = Some(value);
         self
     }
-    fn startTime(&mut self, value: String) -> &mut Self {
-        self.as_object().startTime = Some(value);
+    fn start_time(&mut self, value: String) -> &mut Self {
+        self.as_object().start_time = Some(value);
         self
     }
     fn summary(&mut self, value: String) -> &mut Self {
         self.as_object().summary = Some(value);
         self
     }
-    fn summaryMap(&mut self, value: HashMap<String, String>) -> &mut Self {
-        self.as_object().summaryMap = Some(value);
+    fn summary_map(&mut self, value: HashMap<String, String>) -> &mut Self {
+        self.as_object().summary_map = Some(value);
         self
     }
     fn tag(&mut self, value: property::Tag) -> &mut Self {
@@ -166,7 +156,6 @@ pub trait ObjectTrait: StreamTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait LinkTrait: StreamTrait {
     fn as_link(&mut self) -> &mut crate::core::Link;
 
@@ -178,8 +167,8 @@ pub trait LinkTrait: StreamTrait {
         self.as_link().rel = Some(value);
         self
     }
-    fn mediaType(&mut self, value: String) -> &mut Self {
-        self.as_link().mediaType = Some(value);
+    fn media_type(&mut self, value: String) -> &mut Self {
+        self.as_link().media_type = Some(value);
         self
     }
     fn name(&mut self, value: String) -> &mut Self {
@@ -204,7 +193,6 @@ pub trait LinkTrait: StreamTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait ActivityTrait: ObjectTrait {
     fn as_activity(&mut self) -> &mut crate::core::Activity;
 
@@ -234,7 +222,6 @@ pub trait ActivityTrait: ObjectTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait IntransitiveActivityTrait: ObjectTrait {
     fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity;
 
@@ -260,12 +247,11 @@ pub trait IntransitiveActivityTrait: ObjectTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait CollectionTrait {
     fn as_collection(&mut self) -> &mut crate::core::Collection;
 
-    fn totalItems(&mut self, value: u64) -> &mut Self {
-        self.as_collection().totalItems = Some(value);
+    fn total_items(&mut self, value: u64) -> &mut Self {
+        self.as_collection().total_items = Some(value);
         self
     }
     fn current(&mut self, value: property::Current) -> &mut Self {
@@ -286,17 +272,15 @@ pub trait CollectionTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait OrderedCollectionTrait: CollectionTrait {
     fn as_ordered_collection(&mut self) -> &mut crate::core::OrderedCollection;
 }
 
-#[allow(non_snake_case)]
 pub trait CollectionPageTrait: CollectionTrait {
     fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage;
 
-    fn partOf(&mut self, value: property::PartOf) -> &mut Self {
-        self.as_collection_page().partOf = Some(value);
+    fn part_of(&mut self, value: property::PartOf) -> &mut Self {
+        self.as_collection_page().part_of = Some(value);
         self
     }
     fn next(&mut self, value: property::Next) -> &mut Self {
@@ -309,12 +293,11 @@ pub trait CollectionPageTrait: CollectionTrait {
     }
 }
 
-#[allow(non_snake_case)]
 pub trait OrderedCollectionPageTrait: CollectionPageTrait {
     fn as_ordered_collection_page(&mut self) -> &mut crate::core::OrderedCollectionPage;
 
-    fn startIndex(&mut self, value: u64) -> &mut Self {
-        self.as_ordered_collection_page().startIndex = Some(value);
+    fn start_index(&mut self, value: u64) -> &mut Self {
+        self.as_ordered_collection_page().start_index = Some(value);
         self
     }
 }

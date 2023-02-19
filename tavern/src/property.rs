@@ -10,7 +10,7 @@ use std::collections::HashMap;
 ///
 /// Domain: `Object`
 ///
-/// Subproperty Of: `attributedTo`
+/// Subproperty Of: `attributed_to`
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(untagged)]
@@ -75,7 +75,7 @@ pub enum Attachment {
 /// attributed entities might not be Actors. For instance, an object might be
 /// attributed to the completion of another activity.
 ///
-/// URI: https://www.w3.org/ns/activitystreams#attributedTo
+/// URI: https://www.w3.org/ns/activitystreams#attributed_to
 ///
 /// Domain: `Link` | `Object`
 #[serde_with::skip_serializing_none]
@@ -303,7 +303,7 @@ pub enum Image {
 /// Indicates one or more entities for which this object is considered a
 /// response.
 ///
-/// URI: https://www.w3.org/ns/activitystreams#inReplyTo
+/// URI: https://www.w3.org/ns/activitystreams#in_reply_to
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
