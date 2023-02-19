@@ -60,7 +60,7 @@ impl StreamTrait for Add {
     fn new() -> Self {
         Self::default()
             .atContext(property::AtContext::String("https://www.w3.org/ns/activitystreams".into()))
-            .r#type(property::Type::String("Service".into()))
+            .r#type(property::Type::String("Add".into()))
             .to_owned()
     }
 
