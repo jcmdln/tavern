@@ -681,7 +681,6 @@ impl ActivityTrait for Offer {
 
 /// FIXME: ADD DOCS!
 #[allow(non_snake_case)]
-#[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Question {
