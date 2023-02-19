@@ -684,12 +684,12 @@ impl ActivityTrait for Offer {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Question {
+    #[serde(flatten)]
+    pub extends: core::Activity,
+
     pub anyOf: Option<property::AnyOf>,
     pub closed: Option<property::Closed>,
     pub oneOf: Option<property::OneOf>,
-
-    #[serde(flatten)]
-    pub extends: core::Activity,
 }
 
 impl StreamTrait for Question {

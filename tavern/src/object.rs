@@ -252,10 +252,10 @@ impl ObjectTrait for Place {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Profile {
-    pub describes: Option<property::Describes>,
-
     #[serde(flatten)]
     pub extends: Object,
+
+    pub describes: Option<property::Describes>,
 }
 
 impl StreamTrait for Profile {
@@ -281,12 +281,12 @@ impl ObjectTrait for Profile {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Relationship {
+    #[serde(flatten)]
+    pub extends: Object,
+
     pub object: Option<property::Object>,
     pub relationship: Option<property::Relationship>,
     pub subject: Option<property::Subject>,
-
-    #[serde(flatten)]
-    pub extends: Object,
 }
 
 impl StreamTrait for Relationship {
@@ -313,11 +313,11 @@ impl ObjectTrait for Relationship {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Tombstone {
-    pub deleted: Option<String>,
-    pub formerType: Option<property::FormerType>,
-
     #[serde(flatten)]
     pub extends: Object,
+
+    pub deleted: Option<String>,
+    pub formerType: Option<property::FormerType>,
 }
 
 impl StreamTrait for Tombstone {

@@ -24,6 +24,9 @@ pub struct Stream {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Object {
+    #[serde(flatten)]
+    pub extends: Stream,
+
     pub attachment: Option<property::Attachment>,
     pub attributedTo: Option<property::AttributedTo>,
     pub audience: Option<property::Audience>,
@@ -53,9 +56,6 @@ pub struct Object {
     pub to: Option<property::To>,
     pub updated: Option<String>,
     pub url: Option<property::Url>,
-
-    #[serde(flatten)]
-    pub extends: Stream,
 }
 
 impl StreamTrait for Object {
@@ -81,6 +81,9 @@ impl ObjectTrait for Object {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Link {
+    #[serde(flatten)]
+    pub extends: Stream,
+
     pub href: Option<String>,
     pub hreflang: Option<String>,
     pub mediaType: Option<String>,
@@ -89,9 +92,6 @@ pub struct Link {
     pub preview: Option<property::Preview>,
     pub height: Option<u64>,
     pub width: Option<u64>,
-
-    #[serde(flatten)]
-    pub extends: Stream,
 }
 
 impl StreamTrait for Link {
@@ -117,15 +117,15 @@ impl LinkTrait for Link {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Activity {
+    #[serde(flatten)]
+    pub extends: Object,
+
     pub actor: Option<property::Actor>,
     pub object: Option<property::Object>,
     pub target: Option<property::Target>,
     pub result: Option<property::Result>,
     pub origin: Option<property::Origin>,
     pub instrument: Option<property::Instrument>,
-
-    #[serde(flatten)]
-    pub extends: Object,
 }
 
 impl StreamTrait for Activity {
@@ -151,14 +151,14 @@ impl ObjectTrait for Activity {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct IntransitiveActivity {
+    #[serde(flatten)]
+    pub extends: Object,
+
     pub actor: Option<property::Actor>,
     pub target: Option<property::Target>,
     pub result: Option<property::Result>,
     pub origin: Option<property::Origin>,
     pub instrument: Option<property::Instrument>,
-
-    #[serde(flatten)]
-    pub extends: Object,
 }
 
 impl StreamTrait for IntransitiveActivity {
@@ -184,14 +184,14 @@ impl ObjectTrait for IntransitiveActivity {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Collection {
+    #[serde(flatten)]
+    pub extends: Object,
+
     pub totalItems: Option<u64>,
     pub current: Option<property::Current>,
     pub first: Option<property::First>,
     pub last: Option<property::Last>,
     pub items: Option<property::Items>,
-
-    #[serde(flatten)]
-    pub extends: Object,
 }
 
 impl StreamTrait for Collection {
@@ -217,14 +217,14 @@ impl ObjectTrait for Collection {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct OrderedCollection {
+    #[serde(flatten)]
+    pub extends: Collection,
+
     pub totalItems: Option<u64>,
     pub current: Option<property::Current>,
     pub first: Option<property::First>,
     pub last: Option<property::Last>,
     pub items: Option<property::Items>,
-
-    #[serde(flatten)]
-    pub extends: Collection,
 }
 
 impl StreamTrait for OrderedCollection {
@@ -256,12 +256,12 @@ impl OrderedCollectionTrait for OrderedCollection {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct CollectionPage {
+    #[serde(flatten)]
+    pub extends: Box<Collection>,
+
     pub partOf: Option<property::PartOf>,
     pub next: Option<property::Next>,
     pub prev: Option<property::Prev>,
-
-    #[serde(flatten)]
-    pub extends: Box<Collection>,
 }
 
 impl StreamTrait for CollectionPage {
@@ -299,10 +299,10 @@ impl CollectionPageTrait for CollectionPage {
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct OrderedCollectionPage {
-    pub startIndex: Option<u64>,
-
     #[serde(flatten)]
     pub extends: CollectionPage,
+
+    pub startIndex: Option<u64>,
 }
 
 impl StreamTrait for OrderedCollectionPage {
