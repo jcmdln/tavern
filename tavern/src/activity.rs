@@ -1,6 +1,6 @@
 use crate::{
     core, property,
-    traits::{ActivityTrait, ObjectTrait, StreamTrait},
+    traits::{ActivityTrait, IntransitiveActivityTrait, ObjectTrait, StreamTrait},
 };
 use serde::{Deserialize, Serialize};
 
@@ -130,7 +130,7 @@ impl ActivityTrait for Announce {
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Arrive {
     #[serde(flatten)]
-    pub extends: core::Activity,
+    pub extends: core::IntransitiveActivity,
 }
 
 impl StreamTrait for Arrive {
@@ -148,12 +148,12 @@ impl StreamTrait for Arrive {
 
 impl ObjectTrait for Arrive {
     fn as_object(&mut self) -> &mut core::Object {
-        &mut self.as_activity().extends
+        &mut self.as_intransitive_activity().extends
     }
 }
 
-impl ActivityTrait for Arrive {
-    fn as_activity(&mut self) -> &mut crate::core::Activity {
+impl IntransitiveActivityTrait for Arrive {
+    fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity {
         &mut self.extends
     }
 }
@@ -679,13 +679,21 @@ impl ActivityTrait for Offer {
     }
 }
 
-/// FIXME: ADD DOCS!
+/// Represents a question being asked. Question objects are an extension of
+/// `IntransitiveActivity`. That is, the Question object is an Activity, but
+/// the direct object is the question itself and therefore it would not contain
+/// an `object` property.
+///
+/// Either of the `anyOf` and `oneOf` properties **may** be used to express
+/// possible answers, but a Question object **must not** have both properties.
+///
+/// URI: https://www.w3.org/ns/activitystreams#Question
 #[allow(non_snake_case)]
 #[serde_with::skip_serializing_none]
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Question {
     #[serde(flatten)]
-    pub extends: core::Activity,
+    pub extends: core::IntransitiveActivity,
 
     pub anyOf: Option<property::AnyOf>,
     pub closed: Option<property::Closed>,
@@ -707,17 +715,17 @@ impl StreamTrait for Question {
 
 impl ObjectTrait for Question {
     fn as_object(&mut self) -> &mut core::Object {
-        &mut self.as_activity().extends
+        &mut self.as_intransitive_activity().extends
     }
 }
 
-impl ActivityTrait for Question {
-    fn as_activity(&mut self) -> &mut crate::core::Activity {
+impl IntransitiveActivityTrait for Question {
+    fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity {
         &mut self.extends
     }
 }
 
-/// Indicates that the `actor` has read to the `object`.
+/// Indicates that the `actor` has read the `object`.
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Read
 #[allow(non_snake_case)]
@@ -910,7 +918,7 @@ impl ActivityTrait for TentativeReject {
 #[derive(Debug, Default, Clone, Deserialize, Serialize)]
 pub struct Travel {
     #[serde(flatten)]
-    pub extends: core::Activity,
+    pub extends: core::IntransitiveActivity,
 }
 
 impl StreamTrait for Travel {
@@ -928,12 +936,12 @@ impl StreamTrait for Travel {
 
 impl ObjectTrait for Travel {
     fn as_object(&mut self) -> &mut core::Object {
-        &mut self.as_activity().extends
+        &mut self.as_intransitive_activity().extends
     }
 }
 
-impl ActivityTrait for Travel {
-    fn as_activity(&mut self) -> &mut crate::core::Activity {
+impl IntransitiveActivityTrait for Travel {
+    fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity {
         &mut self.extends
     }
 }
