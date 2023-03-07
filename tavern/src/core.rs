@@ -10,9 +10,8 @@ use std::collections::HashMap;
 
 /// Everything is a `Stream` which inherits base properties that belong to all
 /// `Object`s and `Link`s.
-
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Stream {
     #[serde(rename = "@context")]
     pub at_context: Option<property::AtContext>,
@@ -34,13 +33,13 @@ impl Default for Stream {
 }
 
 impl StreamTrait for Stream {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         self
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Object {
     #[serde(flatten)]
@@ -116,19 +115,19 @@ impl Default for Object {
 }
 
 impl StreamTrait for Object {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.extends
     }
 }
 
 impl ObjectTrait for Object {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         self
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Link {
     #[serde(flatten)]
@@ -161,7 +160,7 @@ impl Default for Link {
 }
 
 impl StreamTrait for Link {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.extends
     }
 }
@@ -173,7 +172,7 @@ impl LinkTrait for Link {
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Activity {
     #[serde(flatten)]
     pub extends: Object,
@@ -201,19 +200,19 @@ impl Default for Activity {
 }
 
 impl StreamTrait for Activity {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_object().extends
     }
 }
 
 impl ObjectTrait for Activity {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         &mut self.extends
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct IntransitiveActivity {
     #[serde(flatten)]
     pub extends: Object,
@@ -241,19 +240,19 @@ impl Default for IntransitiveActivity {
 }
 
 impl StreamTrait for IntransitiveActivity {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_object().extends
     }
 }
 
 impl ObjectTrait for IntransitiveActivity {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         &mut self.extends
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Collection {
     #[serde(flatten)]
@@ -280,19 +279,19 @@ impl Default for Collection {
 }
 
 impl StreamTrait for Collection {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_object().extends
     }
 }
 
 impl ObjectTrait for Collection {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         &mut self.extends
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct OrderedCollection {
     #[serde(flatten)]
@@ -310,25 +309,25 @@ impl Default for OrderedCollection {
 }
 
 impl StreamTrait for OrderedCollection {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_collection().as_object().extends
     }
 }
 
 impl CollectionTrait for OrderedCollection {
-    fn as_collection(&mut self) -> &mut crate::core::Collection {
+    fn as_collection(&mut self) -> &mut Collection {
         &mut self.extends
     }
 }
 
 impl OrderedCollectionTrait for OrderedCollection {
-    fn as_ordered_collection(&mut self) -> &mut crate::core::OrderedCollection {
+    fn as_ordered_collection(&mut self) -> &mut OrderedCollection {
         self
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CollectionPage {
     #[serde(flatten)]
@@ -355,31 +354,31 @@ impl Default for CollectionPage {
 }
 
 impl StreamTrait for CollectionPage {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_object().extends
     }
 }
 
 impl ObjectTrait for CollectionPage {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         &mut self.as_collection().extends
     }
 }
 
 impl CollectionTrait for CollectionPage {
-    fn as_collection(&mut self) -> &mut crate::core::Collection {
+    fn as_collection(&mut self) -> &mut Collection {
         &mut self.as_collection_page().extends
     }
 }
 
 impl CollectionPageTrait for CollectionPage {
-    fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage {
+    fn as_collection_page(&mut self) -> &mut CollectionPage {
         self
     }
 }
 
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct OrderedCollectionPage {
     #[serde(flatten)]
@@ -400,31 +399,31 @@ impl Default for OrderedCollectionPage {
 }
 
 impl StreamTrait for OrderedCollectionPage {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut Stream {
         &mut self.as_object().extends
     }
 }
 
 impl ObjectTrait for OrderedCollectionPage {
-    fn as_object(&mut self) -> &mut crate::core::Object {
+    fn as_object(&mut self) -> &mut Object {
         &mut self.as_collection().extends
     }
 }
 
 impl CollectionTrait for OrderedCollectionPage {
-    fn as_collection(&mut self) -> &mut crate::core::Collection {
+    fn as_collection(&mut self) -> &mut Collection {
         &mut self.as_collection_page().extends
     }
 }
 
 impl CollectionPageTrait for OrderedCollectionPage {
-    fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage {
+    fn as_collection_page(&mut self) -> &mut CollectionPage {
         &mut self.extends
     }
 }
 
 impl OrderedCollectionPageTrait for OrderedCollectionPage {
-    fn as_ordered_collection_page(&mut self) -> &mut crate::core::OrderedCollectionPage {
+    fn as_ordered_collection_page(&mut self) -> &mut OrderedCollectionPage {
         self
     }
 }

@@ -1,10 +1,10 @@
-use crate::property;
+use crate::{core, property};
 use serde::Serialize;
 use serde_json::{Error, Value};
 use std::collections::HashMap;
 
 pub trait StreamTrait {
-    fn as_stream(&mut self) -> &mut crate::core::Stream;
+    fn as_stream(&mut self) -> &mut core::Stream;
 
     fn to_string(&self) -> Result<String, Error>
     where
@@ -36,7 +36,7 @@ pub trait StreamTrait {
 }
 
 pub trait ObjectTrait: StreamTrait {
-    fn as_object(&mut self) -> &mut crate::core::Object;
+    fn as_object(&mut self) -> &mut core::Object;
 
     fn attachment(&mut self, value: property::Attachment) -> &mut Self {
         self.as_object().attachment = Some(value);
@@ -157,7 +157,7 @@ pub trait ObjectTrait: StreamTrait {
 }
 
 pub trait LinkTrait: StreamTrait {
-    fn as_link(&mut self) -> &mut crate::core::Link;
+    fn as_link(&mut self) -> &mut core::Link;
 
     fn href(&mut self, value: String) -> &mut Self {
         self.as_link().href = Some(value);
@@ -194,7 +194,7 @@ pub trait LinkTrait: StreamTrait {
 }
 
 pub trait ActivityTrait: ObjectTrait {
-    fn as_activity(&mut self) -> &mut crate::core::Activity;
+    fn as_activity(&mut self) -> &mut core::Activity;
 
     fn actor(&mut self, value: property::Actor) -> &mut Self {
         self.as_activity().actor = Some(value);
@@ -223,7 +223,7 @@ pub trait ActivityTrait: ObjectTrait {
 }
 
 pub trait IntransitiveActivityTrait: ObjectTrait {
-    fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity;
+    fn as_intransitive_activity(&mut self) -> &mut core::IntransitiveActivity;
 
     fn actor(&mut self, value: property::Actor) -> &mut Self {
         self.as_intransitive_activity().actor = Some(value);
@@ -248,7 +248,7 @@ pub trait IntransitiveActivityTrait: ObjectTrait {
 }
 
 pub trait CollectionTrait {
-    fn as_collection(&mut self) -> &mut crate::core::Collection;
+    fn as_collection(&mut self) -> &mut core::Collection;
 
     fn total_items(&mut self, value: u64) -> &mut Self {
         self.as_collection().total_items = Some(value);
@@ -273,11 +273,11 @@ pub trait CollectionTrait {
 }
 
 pub trait OrderedCollectionTrait: CollectionTrait {
-    fn as_ordered_collection(&mut self) -> &mut crate::core::OrderedCollection;
+    fn as_ordered_collection(&mut self) -> &mut core::OrderedCollection;
 }
 
 pub trait CollectionPageTrait: CollectionTrait {
-    fn as_collection_page(&mut self) -> &mut crate::core::CollectionPage;
+    fn as_collection_page(&mut self) -> &mut core::CollectionPage;
 
     fn part_of(&mut self, value: property::PartOf) -> &mut Self {
         self.as_collection_page().part_of = Some(value);
@@ -294,7 +294,7 @@ pub trait CollectionPageTrait: CollectionTrait {
 }
 
 pub trait OrderedCollectionPageTrait: CollectionPageTrait {
-    fn as_ordered_collection_page(&mut self) -> &mut crate::core::OrderedCollectionPage;
+    fn as_ordered_collection_page(&mut self) -> &mut core::OrderedCollectionPage;
 
     fn start_index(&mut self, value: u64) -> &mut Self {
         self.as_ordered_collection_page().start_index = Some(value);

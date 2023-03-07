@@ -3,13 +3,6 @@
 
   "evenBetterToml.formatter.columnWidth": 100,
 
-  "files.associations": {
-    ".clang-format": "yaml",
-    ".clang-tidy": "yaml",
-    ".clangd": "yaml",
-    "*.c": "c",
-    "*.h": "c"
-  },
   "files.watcherExclude": {
     "**/target/**": true
   },

@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Accept
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Accept {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -23,7 +23,7 @@ pub struct Accept {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Add
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Add {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -36,7 +36,7 @@ pub struct Add {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Announce
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Announce {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -48,7 +48,7 @@ pub struct Announce {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Arrive
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Arrive {
     #[serde(flatten)]
     pub extends: core::IntransitiveActivity,
@@ -61,7 +61,7 @@ pub struct Arrive {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Block
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Block {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -71,7 +71,7 @@ pub struct Block {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Create
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Create {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -82,7 +82,7 @@ pub struct Create {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Delete
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Delete {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -92,7 +92,7 @@ pub struct Delete {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Dislike
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Dislike {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -104,7 +104,7 @@ pub struct Dislike {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Flag
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Flag {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -117,7 +117,7 @@ pub struct Flag {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Follow
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Follow {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -128,7 +128,7 @@ pub struct Follow {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Ignore
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Ignore {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -139,7 +139,7 @@ pub struct Ignore {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Invite
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Invite {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -150,7 +150,7 @@ pub struct Invite {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Join
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Join {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -161,7 +161,7 @@ pub struct Join {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Leave
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Leave {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -172,7 +172,7 @@ pub struct Leave {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Like
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Like {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -182,7 +182,7 @@ pub struct Like {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Listen
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Listen {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -194,7 +194,7 @@ pub struct Listen {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Move
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Move {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -205,7 +205,7 @@ pub struct Move {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Offer
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Offer {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -221,7 +221,7 @@ pub struct Offer {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Question
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Question {
     #[serde(flatten)]
@@ -246,7 +246,7 @@ impl Default for Question {
 }
 
 impl StreamTrait for Question {
-    fn as_stream(&mut self) -> &mut crate::core::Stream {
+    fn as_stream(&mut self) -> &mut core::Stream {
         &mut self.as_object().extends
     }
 }
@@ -258,7 +258,7 @@ impl ObjectTrait for Question {
 }
 
 impl IntransitiveActivityTrait for Question {
-    fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity {
+    fn as_intransitive_activity(&mut self) -> &mut core::IntransitiveActivity {
         &mut self.extends
     }
 }
@@ -267,7 +267,7 @@ impl IntransitiveActivityTrait for Question {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Read
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Read {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -278,7 +278,7 @@ pub struct Read {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Reject
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Reject {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -289,7 +289,7 @@ pub struct Reject {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Remove
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Remove {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -299,7 +299,7 @@ pub struct Remove {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#TentativeAccept
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TentativeAccept {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -309,7 +309,7 @@ pub struct TentativeAccept {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#TentativeReject
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct TentativeReject {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -322,7 +322,7 @@ pub struct TentativeReject {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Travel
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Travel {
     #[serde(flatten)]
     pub extends: core::IntransitiveActivity,
@@ -338,7 +338,7 @@ pub struct Travel {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Undo
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Undo {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -352,7 +352,7 @@ pub struct Undo {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#Update
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Update {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -362,7 +362,7 @@ pub struct Update {
 ///
 /// URI: https://www.w3.org/ns/activitystreams#View
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct View {
     #[serde(flatten)]
     pub extends: core::Activity,
@@ -381,19 +381,19 @@ macro_rules! activity_impl {
         }
 
         impl $crate::traits::StreamTrait for $t {
-            fn as_stream(&mut self) -> &mut crate::core::Stream {
+            fn as_stream(&mut self) -> &mut $crate::core::Stream {
                 &mut self.as_object().extends
             }
         }
 
         impl $crate::traits::ObjectTrait for $t {
-            fn as_object(&mut self) -> &mut core::Object {
+            fn as_object(&mut self) -> &mut $crate::core::Object {
                 &mut self.as_activity().extends
             }
         }
 
         impl $crate::traits::ActivityTrait for $t {
-            fn as_activity(&mut self) -> &mut crate::core::Activity {
+            fn as_activity(&mut self) -> &mut $crate::core::Activity {
                 &mut self.extends
             }
         }
@@ -418,19 +418,19 @@ macro_rules! intransitive_activity {
         }
 
         impl $crate::traits::StreamTrait for $t {
-            fn as_stream(&mut self) -> &mut crate::core::Stream {
+            fn as_stream(&mut self) -> &mut $crate::core::Stream {
                 &mut self.as_object().extends
             }
         }
 
         impl $crate::traits::ObjectTrait for $t {
-            fn as_object(&mut self) -> &mut core::Object {
+            fn as_object(&mut self) -> &mut $crate::core::Object {
                 &mut self.as_intransitive_activity().extends
             }
         }
 
         impl $crate::traits::IntransitiveActivityTrait for $t {
-            fn as_intransitive_activity(&mut self) -> &mut crate::core::IntransitiveActivity {
+            fn as_intransitive_activity(&mut self) -> &mut $crate::core::IntransitiveActivity {
                 &mut self.extends
             }
         }

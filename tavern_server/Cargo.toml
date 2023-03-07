@@ -9,9 +9,7 @@ edition = "2021"
 rust-version = "1.56"
 
 [dependencies]
-axum = "0.6.2"
-diesel = { version = "2.0.2", features = ["postgres", "serde_json", "sqlite", "uuid"] }
+tavern = { version = "0.0.2", path = "../tavern" }
 
-[dependencies.tavern]
-version = "*"
-path = "../tavern"
+#axum = { version = "0.6.0", default-features = false }
+#diesel = { version = "2.0.0", default-features = false, features = ["postgres", "sqlite"] }

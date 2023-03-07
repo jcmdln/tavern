@@ -12,7 +12,7 @@ use std::collections::HashMap;
 ///
 /// Subproperty Of: `attributed_to`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Actor {
     Link(core::Link),
@@ -29,7 +29,7 @@ pub enum Actor {
 ///
 /// Domain: `Question`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AnyOf {
     Link(core::Link),
@@ -46,7 +46,7 @@ pub enum AnyOf {
 ///
 /// Domain: `Object` | `Link`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AtContext {
     Map(HashMap<String, String>),
@@ -62,7 +62,7 @@ pub enum AtContext {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Attachment {
     Link(core::Link),
@@ -79,7 +79,7 @@ pub enum Attachment {
 ///
 /// Domain: `Link` | `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum AttributedTo {
     Link(core::Link),
@@ -95,7 +95,7 @@ pub enum AttributedTo {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Audience {
     Link(core::Link),
@@ -111,7 +111,7 @@ pub enum Audience {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Bcc {
     Link(core::Link),
@@ -127,7 +127,7 @@ pub enum Bcc {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Bto {
     Link(core::Link),
@@ -143,7 +143,7 @@ pub enum Bto {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Cc {
     Link(core::Link),
@@ -159,7 +159,7 @@ pub enum Cc {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Closed {
     Boolean(bool),
@@ -180,7 +180,7 @@ pub enum Closed {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Context {
     Link(core::Link),
@@ -196,7 +196,7 @@ pub enum Context {
 ///
 /// Domain: Collection
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Current {
     CollectionPage(core::CollectionPage),
@@ -213,7 +213,7 @@ pub enum Current {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Describes {
     Object(core::Object),
@@ -229,7 +229,7 @@ pub enum Describes {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum First {
     CollectionPage(core::CollectionPage),
@@ -246,7 +246,7 @@ pub enum First {
 ///
 /// Functional: `False`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum FormerType {
     Object(core::Object),
@@ -259,7 +259,7 @@ pub enum FormerType {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Generator {
     Link(core::Link),
@@ -276,7 +276,7 @@ pub enum Generator {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Icon {
     Image(Box<object::Image>),
@@ -292,7 +292,7 @@ pub enum Icon {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Image {
     Image(Box<object::Image>),
@@ -307,7 +307,7 @@ pub enum Image {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum InReplyTo {
     Link(core::Link),
@@ -323,7 +323,7 @@ pub enum InReplyTo {
 ///
 /// Domain: `Activity`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Instrument {
     String(String),
@@ -336,7 +336,7 @@ pub enum Instrument {
 ///
 /// Domain: `Collection`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Items {
     Link(core::Link),
@@ -354,7 +354,7 @@ pub enum Items {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Last {
     String(String),
@@ -367,7 +367,7 @@ pub enum Last {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Location {
     Link(core::Link),
@@ -384,7 +384,7 @@ pub enum Location {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Next {
     CollectionPage(Box<core::CollectionPage>),
@@ -405,7 +405,7 @@ pub enum Next {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Object {
     Link(core::Link),
@@ -422,7 +422,7 @@ pub enum Object {
 ///
 /// Domain: `Question`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum OneOf {
     Link(core::Link),
@@ -440,7 +440,7 @@ pub enum OneOf {
 ///
 /// Domain: `Activity`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Origin {
     Link(core::Link),
@@ -455,7 +455,7 @@ pub enum Origin {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum PartOf {
     Collection(Box<core::Collection>),
@@ -471,7 +471,7 @@ pub enum PartOf {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Prev {
     CollectionPage(Box<core::CollectionPage>),
@@ -485,7 +485,7 @@ pub enum Prev {
 ///
 /// Domain: `Link` | `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Preview {
     Link(Box<core::Link>),
@@ -503,7 +503,7 @@ pub enum Preview {
 ///
 /// Domain: `Link`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Rel {
     String(String),
@@ -517,7 +517,7 @@ pub enum Rel {
 ///
 /// Domain: `Relationship`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Relationship {
     Object(core::Object),
@@ -533,7 +533,7 @@ pub enum Relationship {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Replies {
     Collection(Box<core::Collection>),
@@ -547,7 +547,7 @@ pub enum Replies {
 ///
 /// Domain: `Activity`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Result {
     Link(core::Link),
@@ -564,7 +564,7 @@ pub enum Result {
 ///
 /// Functional: `True`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Subject {
     Object(core::Object),
@@ -580,7 +580,7 @@ pub enum Subject {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Tag {
     Link(core::Link),
@@ -600,7 +600,7 @@ pub enum Tag {
 ///
 /// Domain: `Activity`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Target {
     Link(core::Link),
@@ -616,7 +616,7 @@ pub enum Target {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum To {
     Link(core::Link),
@@ -631,7 +631,7 @@ pub enum To {
 ///
 /// Domain: `Object` | `Link`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Type {
     String(String),
@@ -645,7 +645,7 @@ pub enum Type {
 ///
 /// Domain: `Object`
 #[serde_with::skip_serializing_none]
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Url {
     Link(core::Link),
