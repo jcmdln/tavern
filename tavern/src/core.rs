@@ -13,9 +13,9 @@ use std::collections::HashMap;
 #[serde_with::skip_serializing_none]
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Stream {
+    pub id: Option<String>,
     #[serde(rename = "@context")]
     pub at_context: Option<property::AtContext>,
-    pub id: Option<String>,
     #[serde(rename = "type")]
     pub kind: Option<property::Type>,
 }

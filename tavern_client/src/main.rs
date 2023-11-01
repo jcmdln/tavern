@@ -37,7 +37,8 @@ fn main() {
     let thing = core::Object::default()
         .kind(property::Type::String("Thing".into()))
         .id("http://domain.tld".into())
-        .to(property::To::String("someone".into()))
+        .to(property::To::String("foo@bar.tld".into()))
+        .bto(property::Bto::String("hello@world.tld".into()))
         .to_value()
         .unwrap_or_default();
     println!("{}", thing);

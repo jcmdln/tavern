@@ -187,13 +187,13 @@ macro_rules! object_impl {
         }
 
         impl $crate::traits::StreamTrait for $t {
-            fn as_stream(&mut self) -> &mut crate::core::Stream {
+            fn as_stream(&mut self) -> &mut $crate::core::Stream {
                 &mut self.as_object().extends
             }
         }
 
         impl $crate::traits::ObjectTrait for $t {
-            fn as_object(&mut self) -> &mut crate::core::Object {
+            fn as_object(&mut self) -> &mut $crate::core::Object {
                 &mut self.extends
             }
         }
